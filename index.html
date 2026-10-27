@@ -14,7 +14,7 @@
   --rule:#DCE3EC; --rule-2:#C6D0DC;
   --blue:#4A82C8; --amber:#E39A1F; --rust:#C8502A;
   --ok:#2E7D5B; --warn:#B07611; --crit:#B9441E;
-  --blue-soft:#E4EDF8; --amber-soft:#FBF0DC; --crit-soft:#F8E4DC;
+  --blue-soft:#E4EDF8; --amber-soft:#FBF0DC; --crit-soft:#F8E4DC; --ok-soft:#DFF0E7;
   --shadow:0 1px 2px rgba(25,33,46,.06),0 8px 24px -16px rgba(25,33,46,.25);
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
@@ -23,7 +23,7 @@
   --rule:#2B3542; --rule-2:#3A4654;
   --blue:#7BA8E0; --amber:#EFB454; --rust:#E07A52;
   --ok:#5FBE92; --warn:#E0A445; --crit:#E07A52;
-  --blue-soft:#1E2C3E; --amber-soft:#332A17; --crit-soft:#3A241C;
+  --blue-soft:#1E2C3E; --amber-soft:#332A17; --crit-soft:#3A241C; --ok-soft:#17301F;
   --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -16px rgba(0,0,0,.8);
 }}
 :root[data-theme="dark"]{
@@ -32,14 +32,14 @@
   --rule:#2B3542; --rule-2:#3A4654;
   --blue:#7BA8E0; --amber:#EFB454; --rust:#E07A52;
   --ok:#5FBE92; --warn:#E0A445; --crit:#E07A52;
-  --blue-soft:#1E2C3E; --amber-soft:#332A17; --crit-soft:#3A241C;
+  --blue-soft:#1E2C3E; --amber-soft:#332A17; --crit-soft:#3A241C; --ok-soft:#17301F;
   --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -16px rgba(0,0,0,.8);
 }
 *{box-sizing:border-box}
 html,body{margin:0}
 body{background:var(--ground);color:var(--ink);
   font-family:"Source Sans 3",system-ui,-apple-system,Segoe UI,sans-serif;font-size:16px;line-height:1.55}
-.wrap{max-width:1060px;margin:0 auto;padding:40px 22px 90px;display:flex;flex-direction:column;gap:44px}
+.wrap{max-width:1060px;margin:0 auto;padding:0 22px 90px;display:flex;flex-direction:column;gap:44px}
 h1,h2,h3{font-family:Archivo,"Source Sans 3",sans-serif;margin:0;text-wrap:balance;letter-spacing:-.01em}
 h1{font-size:clamp(27px,4.4vw,38px);font-weight:700;line-height:1.1}
 h2{font-size:22px;font-weight:600}
@@ -51,7 +51,7 @@ p{margin:0}
 .lead{color:var(--ink-2);max-width:66ch}
 section{display:flex;flex-direction:column;gap:17px}
 .sechead{display:flex;flex-direction:column;gap:6px;border-bottom:1px solid var(--rule);padding-bottom:12px}
-header{display:flex;flex-direction:column;gap:16px}
+header{display:flex;flex-direction:column;gap:16px;padding-top:10px}
 .topbar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
 .who{font-size:13.5px;color:var(--ink-3);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 button{font:inherit;cursor:pointer}
@@ -59,6 +59,27 @@ button{font:inherit;cursor:pointer}
   padding:9px 16px;border:1px solid var(--blue);background:var(--blue);color:#fff}
 .btn.ghost{background:none;color:var(--blue)}
 .btn:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+
+/* ---- faixa de estado, sempre no topo ---- */
+.estado{position:sticky;top:0;z-index:50;margin:0 -22px 0;padding:10px 22px;
+  display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;
+  border-bottom:1px solid var(--rule);background:var(--panel);backdrop-filter:saturate(1.2) blur(6px)}
+.estado.vivo{background:var(--ok-soft);border-bottom-color:var(--ok)}
+.estado.parado{background:var(--crit-soft);border-bottom-color:var(--crit)}
+.selo{display:inline-flex;align-items:center;gap:8px;font-family:Archivo,sans-serif;
+  font-weight:700;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase}
+.estado.vivo .selo{color:var(--ok)} .estado.parado .selo{color:var(--crit)}
+.pulso{width:9px;height:9px;border-radius:50%;background:currentColor;position:relative;flex:none}
+.estado.vivo .pulso::after{content:"";position:absolute;inset:-5px;border-radius:50%;
+  border:2px solid currentColor;opacity:.55;animation:bate 1.9s ease-out infinite}
+@keyframes bate{0%{transform:scale(.6);opacity:.6}100%{transform:scale(1.5);opacity:0}}
+.xis{font-size:15px;line-height:1;font-weight:700}
+.estado .det{font-size:13px;color:var(--ink-2)}
+.estado .dir{margin-left:auto;display:flex;align-items:center;gap:12px}
+.mini{font-family:Archivo,sans-serif;font-weight:600;font-size:12.5px;border-radius:7px;
+  padding:6px 12px;border:1px solid var(--rule-2);background:var(--panel);color:var(--ink)}
+.mini:hover{background:var(--panel-2)}
+
 .figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;
   background:var(--rule);border:1px solid var(--rule);border-radius:10px;overflow:hidden}
 .fig{background:var(--panel);padding:16px 18px;display:flex;flex-direction:column;gap:3px}
@@ -128,6 +149,16 @@ footer{border-top:1px solid var(--rule);padding-top:18px;color:var(--ink-3);font
 </style>
 </head>
 <body>
+
+<div class="estado" id="estado" hidden>
+  <span class="selo" id="selo"></span>
+  <span class="det" id="estado-det"></span>
+  <span class="dir">
+    <span class="det" id="relogio"></span>
+    <button class="mini" id="btn-agora" type="button">Atualizar agora</button>
+  </span>
+</div>
+
 <div class="wrap">
 
 <header>
@@ -139,7 +170,7 @@ footer{border-top:1px solid var(--rule);padding-top:18px;color:var(--ink-3);font
       <button class="btn ghost" id="btn-sair" hidden type="button">Sair</button>
     </div>
   </div>
-  <p class="lead">Quem tem cada licença, quanto a Azure está gastando com as automações, e onde há dinheiro parado. Os números são buscados no Microsoft 365 e na Azure <b>no momento em que você abre esta página</b>. Nada fica gravado aqui dentro.</p>
+  <p class="lead">Quem tem cada licença, quanto a Azure está gastando com as automações, e onde há dinheiro parado. A página relê o Microsoft 365 sozinha a cada minuto. Nada fica gravado aqui dentro.</p>
 </header>
 
 <div class="gate" id="gate">
@@ -198,7 +229,7 @@ footer{border-top:1px solid var(--rule);padding-top:18px;color:var(--ink-3);font
           <dt>O que entra</dt><dd>Consumo da Azure, Standard + Copilot, Power Automate Premium</dd>
           <dt>Pagamento</dt><dd><b>Transferência, na mão</b></dd>
         </dl>
-        <p class="why">A Microsoft confirmou por escrito que não existe pagamento automático neste contrato. A nota fiscal sai junto com a fatura, antes do pagamento.</p>
+        <p class="why">Não existe pagamento automático neste contrato, a Microsoft confirmou por escrito. Quem recebe o lembrete de vencimento são os contatos de contas a pagar: <span class="mono">ti@</span> e <span class="mono">fiscal@</span>.</p>
       </div>
     </div>
   </section>
@@ -206,7 +237,7 @@ footer{border-top:1px solid var(--rule);padding-top:18px;color:var(--ink-3);font
   <section>
     <div class="sechead">
       <h2>O que a Azure está cobrando</h2>
-      <p class="lead">Consumo do mês corrente, lido agora da Azure.</p>
+      <p class="lead">Consumo do mês corrente. A Azure só recalcula algumas vezes por dia, então este bloco é relido a cada 10 minutos.</p>
     </div>
     <div class="chart" id="chart-box"><div id="chart"></div></div>
     <div class="scroll"><table>
@@ -240,7 +271,7 @@ footer{border-top:1px solid var(--rule);padding-top:18px;color:var(--ink-3);font
 
   <footer>
     <p><b>Nenhum dado está gravado neste arquivo.</b> O código é público, os números não: eles chegam do Microsoft 365 e da Azure depois que você entra, e somem quando você fecha a aba.</p>
-    <p>Última leitura: <b id="carimbo"></b>. Fontes: Microsoft Graph e Azure Cost Management.</p>
+    <p>Fontes: Microsoft Graph e Azure Cost Management, lidos com a sua permissão.</p>
   </footer>
 </main>
 </div>
@@ -255,8 +286,14 @@ const TENANT_ID = "a2850abc-334a-4805-b6b2-420b4aef68a9";
 const GRAPH_SCOPES = ["User.Read", "Directory.Read.All"];
 const ARM_SCOPES   = ["https://management.azure.com/user_impersonation"];
 
-/* Preco por assento, com imposto, conforme a ultima fatura da Microsoft.
-   Nao existe API publica de preco de licenca: estes numeros vem das faturas. */
+/* Com que frequencia cada fonte e relida.
+   O Graph e barato. A Azure e limitada e so recalcula algumas vezes por dia,
+   entao ler de minuto em minuto so serviria para tomar bloqueio por excesso. */
+const PASSO_GRAPH =  60 * 1000;
+const PASSO_AZURE = 600 * 1000;
+const ESPERA_APOS_ERRO = 120 * 1000;
+
+/* Preco por assento, com imposto, conforme a ultima fatura da Microsoft. */
 const PRECO = {
   O365_BUSINESS_PREMIUM: 83.50,
   O365_BUSINESS_ESSENTIALS: 48.10,
@@ -273,24 +310,23 @@ const NOME = {
 };
 const PAGAS = Object.keys(PRECO);
 
-/* O que cada automacao faz. Casa pelo inicio do nome do recurso. */
 const EXPLICA = [
-  ["pg-homylda",                        "Banco da Homylda. Cobra por hora ligada, use ou não."],
-  ["sthomylda",                         "Arquivos da Homylda."],
-  ["kv-homylda",                        "Cofre de segredos da Homylda."],
-  ["doc-fornecedores-receber",          "Lê os e-mails dos fornecedores, 1x por dia."],
-  ["doc-fornecedores-ler-validade",     "Lê a validade dentro do PDF."],
-  ["doc-fornecedores-lista-escrever",   "Grava linha na lista do SharePoint. A mais chamada."],
-  ["doc-fornecedores-carregar-lista",   "Carga inicial da lista."],
-  ["doc-fornecedores-limpar-teste",     "Apaga linhas de teste."],
-  ["doc-fornecedores-reparar",          "Repara inconsistência nas linhas."],
-  ["doc-fornecedores-consultar",        "Lê linhas da lista antes de gravar."],
-  ["doc-fornecedores-corrigir-datas",   "Conserta vencimento gravado fora do meio-dia."],
+  ["pg-homylda",                         "Banco da Homylda. Cobra por hora ligada, use ou não."],
+  ["sthomylda",                          "Arquivos da Homylda."],
+  ["kv-homylda",                         "Cofre de segredos da Homylda."],
+  ["doc-fornecedores-receber",           "Lê os e-mails dos fornecedores, 1x por dia."],
+  ["doc-fornecedores-ler-validade",      "Lê a validade dentro do PDF."],
+  ["doc-fornecedores-lista-escrever",    "Grava linha na lista do SharePoint. A mais chamada."],
+  ["doc-fornecedores-carregar-lista",    "Carga inicial da lista."],
+  ["doc-fornecedores-limpar-teste",      "Apaga linhas de teste."],
+  ["doc-fornecedores-reparar",           "Repara inconsistência nas linhas."],
+  ["doc-fornecedores-consultar",         "Lê linhas da lista antes de gravar."],
+  ["doc-fornecedores-corrigir-datas",    "Conserta vencimento gravado fora do meio-dia."],
   ["doc-fornecedores-ajustar-vencimento","Confere e ajusta vencimentos um a um."],
-  ["doc-fornecedores-sp-request",       "Chamada genérica ao SharePoint."],
-  ["doc-fornecedores",                  "Automação dos documentos de fornecedores."],
-  ["stdocfornecedores",                 "Arquivos da automação de documentos."],
-  ["teste-",                            "Teste de rede. Pode ser apagado se não estiver em uso."]
+  ["doc-fornecedores-sp-request",        "Chamada genérica ao SharePoint."],
+  ["doc-fornecedores",                   "Automação dos documentos de fornecedores."],
+  ["stdocfornecedores",                  "Arquivos da automação de documentos."],
+  ["teste-",                             "Teste de rede. Pode ser apagado se não estiver em uso."]
 ];
 const SETOR = [["rg-doc-fornecedores","Suprimentos"],["rg-homylda","TI / Homylda"],
                ["copilot-credits-rg","TI / Cowork"],["defaultresourcegroup","TI / infraestrutura"],
@@ -310,11 +346,51 @@ const msalInstance = new msal.PublicClientApplication({
 });
 
 let conta = null;
+let deFundo = false;        // true quando a leitura veio do relogio, nao de um clique
+let ultimoOk = null;        // quando a ultima leitura completa deu certo
+let azureDepoisDe = 0;      // so rele a Azure a partir deste instante
+let azureCache = null;      // ultimo resultado bom da Azure
+let azureErro = null;
+let emCurso = false;
+let tmLoop = null, tmRelogio = null;
+
+/* ------------- faixa de estado ------------- */
+
+function vivo(){
+  const b = $("#estado");
+  b.hidden = false; b.classList.remove("parado"); b.classList.add("vivo");
+  $("#selo").innerHTML = '<span class="pulso"></span>AO VIVO';
+  $("#estado-det").textContent = "relendo sozinho a cada minuto";
+  relogio();
+}
+function parado(motivo){
+  const b = $("#estado");
+  b.hidden = false; b.classList.remove("vivo"); b.classList.add("parado");
+  $("#selo").innerHTML = '<span class="xis">&#10006;</span>SEM ATUALIZAR';
+  $("#estado-det").textContent = motivo || "não consegui reler";
+  relogio();
+}
+function relogio(){
+  const el = $("#relogio");
+  if (!ultimoOk){ el.textContent = ""; return; }
+  const s = Math.round((Date.now() - ultimoOk.getTime())/1000);
+  el.textContent = s < 10 ? "lido agora"
+    : s < 60 ? "lido há " + s + " s"
+    : s < 3600 ? "lido há " + Math.round(s/60) + " min"
+    : "lido às " + ultimoOk.toLocaleTimeString("pt-BR");
+}
+
+/* ------------- acesso ------------- */
 
 async function token(scopes){
   const req = { scopes, account: conta };
   try { return (await msalInstance.acquireTokenSilent(req)).accessToken; }
-  catch(e){ return (await msalInstance.acquireTokenPopup(req)).accessToken; }
+  catch(e){
+    // Numa releitura automatica nao abrimos janela: o navegador bloquearia,
+    // e piscar uma janela de login sozinho assusta mais do que ajuda.
+    if (deFundo) throw new Error("a sessão expirou, clique em Atualizar agora");
+    return (await msalInstance.acquireTokenPopup(req)).accessToken;
+  }
 }
 
 async function graph(caminho){
@@ -322,7 +398,7 @@ async function graph(caminho){
   let url = "https://graph.microsoft.com/v1.0" + caminho, saida = [];
   while (url){
     const r = await fetch(url, { headers:{ Authorization:"Bearer "+t } });
-    if (!r.ok) throw new Error("Graph " + r.status + ": " + (await r.text()).slice(0,180));
+    if (!r.ok) throw new Error("Microsoft 365 respondeu " + r.status);
     const j = await r.json();
     saida = saida.concat(j.value || [j]);
     url = j["@odata.nextLink"] || null;
@@ -337,11 +413,12 @@ async function arm(url, corpo){
     headers: { Authorization:"Bearer "+t, "Content-Type":"application/json" },
     body: corpo ? JSON.stringify(corpo) : undefined
   });
-  if (!r.ok) throw new Error("Azure " + r.status + ": " + (await r.text()).slice(0,180));
+  if (r.status === 429) throw new Error("a Azure pediu para esperar (limite de consultas)");
+  if (!r.ok) throw new Error("Azure respondeu " + r.status);
   return r.json();
 }
 
-/* ---------------- desenho ---------------- */
+/* ------------- desenho ------------- */
 
 function desenhaLicencas(skus, users){
   const lista = skus.filter(s => PAGAS.indexOf(s.skuPartNumber) >= 0)
@@ -355,10 +432,16 @@ function desenhaLicencas(skus, users){
                preco:PRECO[s.skuPartNumber], pessoas };
     }).sort((a,b)=> (b.compradas*b.preco)-(a.compradas*a.preco));
 
+  const abertas = new Set();
+  document.querySelectorAll(".lic.open .licbar").forEach(b=>{
+    const t = b.querySelector("strong"); if (t) abertas.add(t.textContent);
+  });
+
   $("#licencas").innerHTML = lista.map((l,i)=>{
     const pct = l.compradas ? Math.round(l.usadas/l.compradas*100) : 0;
-    return '<div class="lic" id="lic'+i+'">'+
-      '<button class="licbar" type="button" aria-expanded="false" aria-controls="pp'+i+'">'+
+    const aberta = abertas.has(l.nome);
+    return '<div class="lic'+(aberta?' open':'')+'" id="lic'+i+'">'+
+      '<button class="licbar" type="button" aria-expanded="'+(aberta?'true':'false')+'" aria-controls="pp'+i+'">'+
       '<span class="licname"><strong>'+esc(l.nome)+'</strong><span class="seats">'+
         '<span class="track"><span class="fill" style="width:'+pct+'%"></span></span>'+
         '<span class="num">'+l.usadas+' de '+l.compradas+'</span>'+
@@ -366,7 +449,7 @@ function desenhaLicencas(skus, users){
       '</span></span>'+
       '<span class="right"><span class="cost num">'+brl(l.compradas*l.preco)+
         '<small>'+brl(l.preco)+' por assento</small></span><span class="chev">&#9654;</span></span>'+
-      '</button><div class="people" id="pp'+i+'" hidden><p class="eyebrow">Quem está com ela</p>'+
+      '</button><div class="people" id="pp'+i+'"'+(aberta?'':' hidden')+'><p class="eyebrow">Quem está com ela</p>'+
       '<div class="plist">'+l.pessoas.map(p=>'<div class="person"><span class="nm" title="'+esc(p.u)+'">'+
         esc(p.n)+'</span>'+(p.a?'':'<span class="tagoff">BLOQUEADO</span>')+'</div>').join('')+
       '</div></div></div>';
@@ -406,7 +489,8 @@ function desenhaAlertas(lista){
 }
 
 function desenhaChart(dias){
-  if (!dias.length){ $("#chart-box").hidden = true; return; }
+  if (!dias || !dias.length){ $("#chart-box").hidden = true; return; }
+  $("#chart-box").hidden = false;
   const W=920,H=190,L=38,R=10,T=14,B=26;
   const max = Math.max.apply(null, dias.map(d=>d.v));
   const passo = Math.max(5, Math.ceil(max/4/5)*5), topo = passo*4;
@@ -426,86 +510,120 @@ function desenhaChart(dias){
   $("#chart").innerHTML = s + '</svg>';
 }
 
-/* ---------------- carga ---------------- */
-
-async function carregar(){
-  $("#gate").hidden = true;
-  $("#carregando").hidden = false;
-  $("#quem").textContent = conta.name || conta.username;
-  $("#btn-sair").hidden = false;
-
-  $("#carregando-txt").textContent = "Consultando as licenças no Microsoft 365…";
-  const skus  = await graph("/subscribedSkus");
-  const users = await graph("/users?$select=displayName,userPrincipalName,accountEnabled,assignedLicenses&$top=999");
-
-  const lista = desenhaLicencas(skus, users);
-  desenhaAlertas(lista);
-
-  const ativos = users.filter(u=>u.accountEnabled).length;
-  $("#n-ativos").textContent = ativos;
-  $("#n-bloq").textContent = users.length - ativos;
-
-  let totalAzure = 0, erroAzure = null, dias = [], recursos = [];
-  try {
-    $("#carregando-txt").textContent = "Consultando o consumo da Azure…";
-    const subs = (await arm("https://management.azure.com/subscriptions?api-version=2022-12-01")).value || [];
-    const sub = subs.find(s=>s.state==="Enabled") || subs[0];
-    if (!sub) throw new Error("nenhuma assinatura visível para a sua conta");
-    const url = "https://management.azure.com/subscriptions/"+sub.subscriptionId+
-                "/providers/Microsoft.CostManagement/query?api-version=2023-11-01";
-    const agg = { totalCost: { name:"Cost", function:"Sum" } };
-
-    const porRec = await arm(url, { type:"ActualCost", timeframe:"MonthToDate",
-      dataset:{ granularity:"None", aggregation:agg,
-        grouping:[{type:"Dimension",name:"ResourceId"},{type:"Dimension",name:"MeterCategory"},
-                  {type:"Dimension",name:"ResourceGroupName"}] } });
-    recursos = (porRec.properties.rows||[]).map(r=>({
-      v:+r[0], nome:String(r[1]).split("/").pop(), svc:r[2], grupo:r[3]
-    })).filter(r=>r.v>0).sort((a,b)=>b.v-a.v);
-    totalAzure = recursos.reduce((s,r)=>s+r.v,0);
-
-    const porDia = await arm(url, { type:"ActualCost", timeframe:"MonthToDate",
-      dataset:{ granularity:"Daily", aggregation:agg } });
-    const mapa = {};
-    (porDia.properties.rows||[]).forEach(r=>{
-      const d = String(r[1]).slice(6,8); mapa[d] = (mapa[d]||0) + (+r[0]);
-    });
-    dias = Object.keys(mapa).sort().map(d=>({d, v:+mapa[d].toFixed(2)}));
-  } catch(e){ erroAzure = e.message; }
-
+function desenhaAzure(){
+  const recursos = azureCache ? azureCache.recursos : [];
   $("#recursos").innerHTML = recursos.length
     ? recursos.map(r=>'<tr><td class="mono">'+esc(r.nome)+'</td><td>'+esc(r.svc)+
         '</td><td class="r num">'+brl(r.v)+'</td><td class="why">'+esc(explica(r.nome))+
         '<br><span class="eyebrow">'+esc(setor(r.grupo))+'</span></td></tr>').join('')
-    : '<tr><td colspan="4" class="why">'+(erroAzure
-        ? 'Não consegui ler o consumo da Azure: '+esc(erroAzure)+'. Isso costuma ser falta de permissão de leitura na assinatura, não defeito da página.'
+    : '<tr><td colspan="4" class="why">'+(azureErro
+        ? 'Não consegui ler o consumo da Azure: '+esc(azureErro)+'. Isso costuma ser falta de permissão de leitura na assinatura, não defeito da página.'
         : 'Nenhum gasto registrado no mês corrente.')+'</td></tr>';
-  if (erroAzure) $("#chart-box").hidden = true; else desenhaChart(dias);
-  $("#azure-nota").textContent = erroAzure ? "" :
-    "O valor da Azure é pré-imposto. A nota fiscal sai sobre o total da fatura, que vem um pouco maior.";
-
-  const mensal = lista.reduce((s,l)=>s+l.compradas*l.preco,0);
-  const livres = lista.reduce((s,l)=>s+l.livres,0);
-  $("#figs").innerHTML = [
-    [users.length, "contas no Microsoft 365"],
-    [lista.reduce((s,l)=>s+l.compradas,0), "assentos pagos"],
-    [livres, livres===1 ? "assento livre" : "assentos livres"],
-    [brl(mensal), "por mês em licença"],
-    [erroAzure ? "—" : brl(totalAzure), "Azure no mês"]
-  ].map(f=>'<div class="fig"><b class="num">'+esc(f[0])+'</b><span>'+esc(f[1])+'</span></div>').join('');
-
-  $("#carimbo").textContent = new Date().toLocaleString("pt-BR");
-  $("#carregando").hidden = true;
-  $("#conteudo").hidden = false;
+  desenhaChart(azureCache ? azureCache.dias : null);
+  $("#azure-nota").textContent = azureCache
+    ? "O valor da Azure é pré-imposto. A nota fiscal sai sobre o total da fatura, que vem um pouco maior."
+    : "";
 }
 
-function falha(e){
-  $("#carregando").hidden = true;
-  $("#gate").hidden = false;
-  const el = $("#gate-erro");
-  el.hidden = false;
-  el.innerHTML = "<b>Não consegui carregar:</b> " + esc(e && e.message ? e.message : e) +
-    "<br>Se a mensagem fala em consentimento ou permissão, é porque o administrador ainda não autorizou esta página.";
+async function lerAzure(){
+  const subs = (await arm("https://management.azure.com/subscriptions?api-version=2022-12-01")).value || [];
+  const sub = subs.find(s=>s.state==="Enabled") || subs[0];
+  if (!sub) throw new Error("nenhuma assinatura visível para a sua conta");
+  const url = "https://management.azure.com/subscriptions/"+sub.subscriptionId+
+              "/providers/Microsoft.CostManagement/query?api-version=2023-11-01";
+  const agg = { totalCost: { name:"Cost", function:"Sum" } };
+
+  const porRec = await arm(url, { type:"ActualCost", timeframe:"MonthToDate",
+    dataset:{ granularity:"None", aggregation:agg,
+      grouping:[{type:"Dimension",name:"ResourceId"},{type:"Dimension",name:"MeterCategory"},
+                {type:"Dimension",name:"ResourceGroupName"}] } });
+  const recursos = (porRec.properties.rows||[]).map(r=>({
+    v:+r[0], nome:String(r[1]).split("/").pop(), svc:r[2], grupo:r[3]
+  })).filter(r=>r.v>0).sort((a,b)=>b.v-a.v);
+
+  const porDia = await arm(url, { type:"ActualCost", timeframe:"MonthToDate",
+    dataset:{ granularity:"Daily", aggregation:agg } });
+  const mapa = {};
+  (porDia.properties.rows||[]).forEach(r=>{
+    const d = String(r[1]).slice(6,8); mapa[d] = (mapa[d]||0) + (+r[0]);
+  });
+  const dias = Object.keys(mapa).sort().map(d=>({d, v:+mapa[d].toFixed(2)}));
+  return { recursos, dias, total: recursos.reduce((s,r)=>s+r.v,0) };
+}
+
+/* ------------- ciclo ------------- */
+
+async function atualizar(){
+  if (emCurso) return;
+  emCurso = true;
+  try {
+    const skus  = await graph("/subscribedSkus");
+    const users = await graph("/users?$select=displayName,userPrincipalName,accountEnabled,assignedLicenses&$top=999");
+
+    const lista = desenhaLicencas(skus, users);
+    desenhaAlertas(lista);
+
+    const ativos = users.filter(u=>u.accountEnabled).length;
+    $("#n-ativos").textContent = ativos;
+    $("#n-bloq").textContent = users.length - ativos;
+
+    if (Date.now() >= azureDepoisDe){
+      try {
+        azureCache = await lerAzure(); azureErro = null;
+        azureDepoisDe = Date.now() + PASSO_AZURE;
+      } catch(e){
+        azureErro = e.message;
+        azureDepoisDe = Date.now() + ESPERA_APOS_ERRO;
+      }
+    }
+    desenhaAzure();
+
+    const mensal = lista.reduce((s,l)=>s+l.compradas*l.preco,0);
+    const livres = lista.reduce((s,l)=>s+l.livres,0);
+    $("#figs").innerHTML = [
+      [users.length, "contas no Microsoft 365"],
+      [lista.reduce((s,l)=>s+l.compradas,0), "assentos pagos"],
+      [livres, livres===1 ? "assento livre" : "assentos livres"],
+      [brl(mensal), "por mês em licença"],
+      [azureCache ? brl(azureCache.total) : "—", "Azure no mês"]
+    ].map(f=>'<div class="fig"><b class="num">'+esc(f[0])+'</b><span>'+esc(f[1])+'</span></div>').join('');
+
+    $("#carregando").hidden = true;
+    $("#conteudo").hidden = false;
+    ultimoOk = new Date();
+    vivo();
+  } catch(e){
+    // Mantemos na tela o ultimo retrato bom: apagar tudo por causa de uma
+    // falha passageira esconderia informacao que ainda vale.
+    parado(e && e.message ? e.message : String(e));
+    if (!ultimoOk){ $("#carregando").hidden = true; $("#gate").hidden = false;
+      $("#gate-erro").hidden = false; $("#gate-erro").innerHTML = "<b>Não consegui carregar:</b> " + esc(e.message); }
+  } finally { emCurso = false; }
+}
+
+function ligarRelogio(){
+  clearInterval(tmLoop); clearInterval(tmRelogio);
+  tmLoop = setInterval(()=>{
+    // Aba escondida nao rele: nao adianta gastar consulta para ninguem ver.
+    if (document.visibilityState !== "visible") return;
+    deFundo = true; atualizar().finally(()=>{ deFundo = false; });
+  }, PASSO_GRAPH);
+  tmRelogio = setInterval(relogio, 5000);
+}
+
+document.addEventListener("visibilitychange", ()=>{
+  if (document.visibilityState === "visible" && conta && ultimoOk){
+    deFundo = true; atualizar().finally(()=>{ deFundo = false; });
+  }
+});
+
+async function comecar(){
+  $("#gate").hidden = true;
+  $("#carregando").hidden = false;
+  $("#quem").textContent = conta.name || conta.username;
+  $("#btn-sair").hidden = false;
+  await atualizar();
+  ligarRelogio();
 }
 
 async function iniciar(){
@@ -513,20 +631,26 @@ async function iniciar(){
   const resp = await msalInstance.handleRedirectPromise();
   if (resp && resp.account) conta = resp.account;
   else { const c = msalInstance.getAllAccounts(); if (c.length) conta = c[0]; }
-  if (conta) carregar().catch(falha);
+  if (conta){ msalInstance.setActiveAccount(conta); comecar(); }
 }
 
 $("#btn-entrar").addEventListener("click", async ()=>{
   try {
     const r = await msalInstance.loginPopup({ scopes: GRAPH_SCOPES });
-    conta = r.account;
-    msalInstance.setActiveAccount(conta);
-    await carregar();
-  } catch(e){ falha(e); }
+    conta = r.account; msalInstance.setActiveAccount(conta);
+    await comecar();
+  } catch(e){
+    $("#gate-erro").hidden = false;
+    $("#gate-erro").innerHTML = "<b>Não consegui entrar:</b> " + esc(e && e.message ? e.message : e);
+  }
 });
-$("#btn-sair").addEventListener("click", ()=> msalInstance.logoutPopup());
+$("#btn-sair").addEventListener("click", ()=>{ clearInterval(tmLoop); msalInstance.logoutPopup(); });
+$("#btn-agora").addEventListener("click", ()=>{ azureDepoisDe = 0; atualizar(); });
 
-iniciar().catch(falha);
+iniciar().catch(e=>{
+  $("#gate-erro").hidden = false;
+  $("#gate-erro").innerHTML = "<b>Não consegui iniciar:</b> " + esc(e && e.message ? e.message : e);
+});
 })();
 </script>
 </body>
