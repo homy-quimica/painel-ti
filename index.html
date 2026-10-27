@@ -426,9 +426,15 @@ function desenhaLicencas(skus, users){
       const pessoas = users.filter(u => (u.assignedLicenses||[]).some(l => l.skuId === s.skuId))
         .map(u => ({ n:(u.displayName||"").replace(/\s*\|\s*Homy Química\s*$/i,""), u:u.userPrincipalName, a:!!u.accountEnabled }))
         .sort((a,b)=>a.n.localeCompare(b.n,"pt-BR"));
+      const saldo = s.prepaidUnits.enabled - s.consumedUnits;
       return { sku:s.skuPartNumber, nome:NOME[s.skuPartNumber]||s.skuPartNumber,
                compradas:s.prepaidUnits.enabled, usadas:s.consumedUnits,
-               livres:s.prepaidUnits.enabled - s.consumedUnits,
+               // Saldo negativo nao e "assento livre negativo": e gente usando
+               // licenca que a Homy nao tem mais. Os dois casos sao separados
+               // de proposito, senao um anula o outro na conta de cima.
+               livres: Math.max(0, saldo),
+               excedente: Math.max(0, -saldo),
+               suspensos: s.prepaidUnits.suspended || 0,
                preco:PRECO[s.skuPartNumber], pessoas };
     }).sort((a,b)=> (b.compradas*b.preco)-(a.compradas*a.preco));
 
@@ -471,7 +477,17 @@ function desenhaAlertas(lista){
   const presos = [];
   lista.forEach(l => l.pessoas.forEach(p => { if(!p.a) presos.push({p:p.n, l:l.nome, v:l.preco}); }));
   const comLivre = lista.filter(l => l.livres > 0);
+  const quebradas = lista.filter(l => l.excedente > 0 || l.suspensos > 0);
   let h = "";
+  if (quebradas.length){
+    h += '<div class="flag crit"><span class="mk">ASSINATURA PARADA</span><div>'+
+      quebradas.map(l=>'<p><b>'+esc(l.nome)+'</b>: a Homy tem <b>'+l.compradas+
+        '</b> assento'+(l.compradas===1?'':'s')+' válido'+(l.compradas===1?'':'s')+
+        ' e <b>'+l.usadas+'</b> pessoa'+(l.usadas===1?'':'s')+' com a licença atribuída'+
+        (l.suspensos>0 ? ', e a assinatura está <b>suspensa</b>' : '')+
+        '. Quem depende dela para de funcionar.</p>').join('')+
+      '<p>Suspensa quer dizer que o prazo venceu sem renovar. Há um período de carência antes de a Microsoft apagar os dados, então isso é para resolver agora, não depois.</p></div></div>';
+  }
   if (presos.length){
     const perdido = presos.reduce((s,x)=>s+(x.v||0),0);
     h += '<div class="flag crit"><span class="mk">DINHEIRO PARADO</span><div><p><b>'+presos.length+
