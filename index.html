@@ -320,8 +320,12 @@ const SERIE = { O365_BUSINESS_PREMIUM:"standard", O365_BUSINESS_ESSENTIALS:"basi
    com a data da conferencia. O que nao estiver aqui aparece como nao confirmado. */
 const TERMO = {
   O365_BUSINESS_ESSENTIALS: { termo:"mensal", conferido:"16/11/2026", nota:"o produto se chama 'Basic (Mês a Mês)' no centro de administração" },
-  O365_BUSINESS_PREMIUM:    { termo:"anual",  conferido:"16/11/2026", nota:"renova por mais um ano em 15/01/2027" }
+  O365_BUSINESS_PREMIUM:    { termo:"anual",  conferido:"16/11/2026", nota:"renova por mais um ano em 15/01/2027" },
+  POWER_BI_PRO:             { termo:"anual",  conferido:"16/11/2026", nota:"renova por mais um ano em 01/08/2027" }
 };
+/* Quanto o compromisso mes a mes custa a mais que o anual, lido no catalogo
+   em 16/11/2026: a razao deu 14,3% nos tres produtos conferidos. */
+const PREMIO_MENSAL = 0.143;
 const PAGAS = Object.keys(PRECO);
 
 const EXPLICA = [
@@ -692,7 +696,8 @@ async function atualizar(){
       else if(l.livres>0 && l.termo==="anual") conselho="Reduzir para "+l.usadas+" assentos na renovação, se ninguém novo entrar.";
       else if(l.livres>0 && l.termo==="mensal") conselho="Mês a mês: dá para reduzir já no próximo ciclo.";
       else if(l.livres>0) conselho="Confirmar o termo no centro de administração antes de decidir.";
-      else if(l.termo==="anual") conselho="Sem sobra. Manter anual faz sentido enquanto a equipe for estável.";
+      else if(l.termo==="anual") conselho="Sem sobra. Trocar para mês a mês custaria cerca de "+
+        brl(l.compradas*l.preco*PREMIO_MENSAL)+" a mais por mês; só vale se a equipe for oscilar.";
       else conselho="Mensal e sem sobra. Nada a fazer.";
       return '<tr><td><b>'+esc(l.nome)+'</b></td>'+
         '<td>'+(l.termo==="anual"?'<span class="tag anual">anual</span>':l.termo==="mensal"?'<span class="tag mensal">mês a mês</span>':'<span class="tag">a confirmar</span>')+'</td>'+
