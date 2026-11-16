@@ -3,148 +3,174 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Licenças e custos da TI | Homy Química</title>
+<title>Custos de TI da Homy</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Source+Sans+3:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
 :root{
-  --ground:#F5F7FA; --panel:#FFFFFF; --panel-2:#EDF1F6;
-  --ink:#19212E; --ink-2:#4A5666; --ink-3:#77838F;
-  --rule:#DCE3EC; --rule-2:#C6D0DC;
-  --blue:#4A82C8; --amber:#E39A1F; --rust:#C8502A;
-  --ok:#2E7D5B; --warn:#B07611; --crit:#B9441E;
-  --blue-soft:#E4EDF8; --amber-soft:#FBF0DC; --crit-soft:#F8E4DC; --ok-soft:#DFF0E7;
-  --shadow:0 1px 2px rgba(25,33,46,.06),0 8px 24px -16px rgba(25,33,46,.25);
+  --ground:#F4F6FA; --panel:#FFFFFF; --panel-2:#EAEFF6;
+  --ink:#141B27; --ink-2:#47536A; --ink-3:#737F93;
+  --rule:#D9E1EC; --rule-2:#BFCBDA;
+  --navy:#091347; --ruby:#D4373B;
+  --blue:#4A82C8; --amber:#E39A1F; --teal:#2E8B84;
+  --ok:#287A56; --warn:#A96C0D; --crit:#B23A1C;
+  --blue-soft:#E3ECF8; --amber-soft:#FBF0DA; --crit-soft:#F9E5DD; --ok-soft:#DCEFE5;
+  --shadow:0 1px 2px rgba(20,27,39,.06),0 10px 28px -20px rgba(20,27,39,.35);
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --ground:#12161D; --panel:#1A2029; --panel-2:#232B36;
-  --ink:#EAEEF4; --ink-2:#AEB9C7; --ink-3:#7F8B9A;
-  --rule:#2B3542; --rule-2:#3A4654;
-  --blue:#7BA8E0; --amber:#EFB454; --rust:#E07A52;
-  --ok:#5FBE92; --warn:#E0A445; --crit:#E07A52;
-  --blue-soft:#1E2C3E; --amber-soft:#332A17; --crit-soft:#3A241C; --ok-soft:#17301F;
-  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -16px rgba(0,0,0,.8);
+  --ground:#0E131C; --panel:#171E2A; --panel-2:#202938;
+  --ink:#E9EEF6; --ink-2:#AFBACA; --ink-3:#7E8B9D;
+  --rule:#293346; --rule-2:#394559;
+  --navy:#C8D2F0; --ruby:#E8676A;
+  --blue:#7EAAE2; --amber:#EDB454; --teal:#5BB5AC;
+  --ok:#5CBE92; --warn:#DEA444; --crit:#E07C58;
+  --blue-soft:#1C2A3D; --amber-soft:#312817; --crit-soft:#36211A; --ok-soft:#15301F;
+  --shadow:0 1px 2px rgba(0,0,0,.45),0 10px 28px -20px rgba(0,0,0,.9);
 }}
 :root[data-theme="dark"]{
-  --ground:#12161D; --panel:#1A2029; --panel-2:#232B36;
-  --ink:#EAEEF4; --ink-2:#AEB9C7; --ink-3:#7F8B9A;
-  --rule:#2B3542; --rule-2:#3A4654;
-  --blue:#7BA8E0; --amber:#EFB454; --rust:#E07A52;
-  --ok:#5FBE92; --warn:#E0A445; --crit:#E07A52;
-  --blue-soft:#1E2C3E; --amber-soft:#332A17; --crit-soft:#3A241C; --ok-soft:#17301F;
-  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -16px rgba(0,0,0,.8);
+  --ground:#0E131C; --panel:#171E2A; --panel-2:#202938;
+  --ink:#E9EEF6; --ink-2:#AFBACA; --ink-3:#7E8B9D;
+  --rule:#293346; --rule-2:#394559;
+  --navy:#C8D2F0; --ruby:#E8676A;
+  --blue:#7EAAE2; --amber:#EDB454; --teal:#5BB5AC;
+  --ok:#5CBE92; --warn:#DEA444; --crit:#E07C58;
+  --blue-soft:#1C2A3D; --amber-soft:#312817; --crit-soft:#36211A; --ok-soft:#15301F;
+  --shadow:0 1px 2px rgba(0,0,0,.45),0 10px 28px -20px rgba(0,0,0,.9);
 }
 *{box-sizing:border-box}
 html,body{margin:0}
 body{background:var(--ground);color:var(--ink);
   font-family:"Source Sans 3",system-ui,-apple-system,Segoe UI,sans-serif;font-size:16px;line-height:1.55}
-.wrap{max-width:1060px;margin:0 auto;padding:0 22px 90px;display:flex;flex-direction:column;gap:44px}
-h1,h2,h3{font-family:Archivo,"Source Sans 3",sans-serif;margin:0;text-wrap:balance;letter-spacing:-.01em}
-h1{font-size:clamp(27px,4.4vw,38px);font-weight:700;line-height:1.1}
-h2{font-size:22px;font-weight:600}
-h3{font-size:17px;font-weight:600}
+h1,h2,h3{font-family:Archivo,sans-serif;margin:0;text-wrap:balance;letter-spacing:-.012em}
+h1{font-size:clamp(25px,4vw,34px);font-weight:700;line-height:1.1}
+h2{font-size:21px;font-weight:600}
+h3{font-size:16px;font-weight:600}
 p{margin:0}
+button{font:inherit;cursor:pointer}
 .mono{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.86em}
 .num{font-variant-numeric:tabular-nums}
-.eyebrow{font-family:Archivo,sans-serif;font-size:11px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3)}
-.lead{color:var(--ink-2);max-width:66ch}
-section{display:flex;flex-direction:column;gap:17px}
-.sechead{display:flex;flex-direction:column;gap:6px;border-bottom:1px solid var(--rule);padding-bottom:12px}
-header{display:flex;flex-direction:column;gap:16px;padding-top:10px}
-.topbar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
-.who{font-size:13.5px;color:var(--ink-3);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-button{font:inherit;cursor:pointer}
-.btn{font-family:Archivo,sans-serif;font-weight:600;font-size:14px;border-radius:8px;
-  padding:9px 16px;border:1px solid var(--blue);background:var(--blue);color:#fff}
-.btn.ghost{background:none;color:var(--blue)}
-.btn:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.eyebrow{font-family:Archivo,sans-serif;font-size:10.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+.lead{color:var(--ink-2);max-width:68ch}
+.why{color:var(--ink-2);font-size:13.5px}
+[hidden]{display:none!important}
 
-/* ---- faixa de estado, sempre no topo ---- */
-.estado{position:sticky;top:0;z-index:50;margin:0 -22px 0;padding:10px 22px;
-  display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;
-  border-bottom:1px solid var(--rule);background:var(--panel);backdrop-filter:saturate(1.2) blur(6px)}
+/* faixa de estado */
+.estado{position:sticky;top:0;z-index:60;padding:9px 22px;display:flex;flex-wrap:wrap;gap:8px 16px;
+  align-items:center;border-bottom:1px solid var(--rule);background:var(--panel)}
 .estado.vivo{background:var(--ok-soft);border-bottom-color:var(--ok)}
 .estado.parado{background:var(--crit-soft);border-bottom-color:var(--crit)}
-.selo{display:inline-flex;align-items:center;gap:8px;font-family:Archivo,sans-serif;
-  font-weight:700;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase}
+.selo{display:inline-flex;align-items:center;gap:8px;font-family:Archivo,sans-serif;font-weight:700;
+  font-size:12px;letter-spacing:.1em;text-transform:uppercase}
 .estado.vivo .selo{color:var(--ok)} .estado.parado .selo{color:var(--crit)}
 .pulso{width:9px;height:9px;border-radius:50%;background:currentColor;position:relative;flex:none}
-.estado.vivo .pulso::after{content:"";position:absolute;inset:-5px;border-radius:50%;
-  border:2px solid currentColor;opacity:.55;animation:bate 1.9s ease-out infinite}
+.estado.vivo .pulso::after{content:"";position:absolute;inset:-5px;border-radius:50%;border:2px solid currentColor;
+  opacity:.55;animation:bate 1.9s ease-out infinite}
 @keyframes bate{0%{transform:scale(.6);opacity:.6}100%{transform:scale(1.5);opacity:0}}
 .xis{font-size:15px;line-height:1;font-weight:700}
 .estado .det{font-size:13px;color:var(--ink-2)}
 .estado .dir{margin-left:auto;display:flex;align-items:center;gap:12px}
-.mini{font-family:Archivo,sans-serif;font-weight:600;font-size:12.5px;border-radius:7px;
-  padding:6px 12px;border:1px solid var(--rule-2);background:var(--panel);color:var(--ink)}
+.mini{font-family:Archivo,sans-serif;font-weight:600;font-size:12.5px;border-radius:7px;padding:6px 12px;
+  border:1px solid var(--rule-2);background:var(--panel);color:var(--ink)}
 .mini:hover{background:var(--panel-2)}
 
-.figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;
-  background:var(--rule);border:1px solid var(--rule);border-radius:10px;overflow:hidden}
-.fig{background:var(--panel);padding:16px 18px;display:flex;flex-direction:column;gap:3px}
-.fig b{font-family:Archivo,sans-serif;font-size:26px;font-weight:600;line-height:1}
+.wrap{max-width:1120px;margin:0 auto;padding:26px 22px 90px;display:flex;flex-direction:column;gap:26px}
+.cab{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end;justify-content:space-between}
+.who{font-size:13.5px;color:var(--ink-3);display:flex;align-items:center;gap:10px}
+.btn{font-family:Archivo,sans-serif;font-weight:600;font-size:14px;border-radius:8px;padding:9px 16px;
+  border:1px solid var(--blue);background:var(--blue);color:#fff}
+.btn.ghost{background:none;color:var(--blue)}
+
+/* abas de modulo */
+.abas{display:flex;gap:4px;flex-wrap:wrap;border-bottom:1px solid var(--rule);padding-bottom:0}
+.aba{font-family:Archivo,sans-serif;font-weight:600;font-size:14.5px;padding:10px 16px;border:0;
+  background:none;color:var(--ink-3);border-bottom:2.5px solid transparent;margin-bottom:-1px}
+.aba:hover{color:var(--ink)}
+.aba[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--ruby)}
+.aba .cont{display:inline-block;margin-left:7px;font-size:11px;padding:1px 6px;border-radius:9px;
+  background:var(--crit);color:#fff;vertical-align:1px}
+.modulo{display:flex;flex-direction:column;gap:26px}
+
+/* numeros */
+.figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:1px;background:var(--rule);
+  border:1px solid var(--rule);border-radius:11px;overflow:hidden}
+.fig{background:var(--panel);padding:15px 17px;display:flex;flex-direction:column;gap:3px}
+.fig b{font-family:Archivo,sans-serif;font-size:25px;font-weight:600;line-height:1.05}
 .fig span{font-size:12.5px;color:var(--ink-3)}
-.flag{display:flex;gap:13px;padding:15px 17px;border-radius:9px;border:1px solid;align-items:flex-start}
-.flag.crit{background:var(--crit-soft);border-color:var(--crit)}
-.flag.warn{background:var(--amber-soft);border-color:var(--amber)}
-.flag .mk{font-family:Archivo,sans-serif;font-weight:700;font-size:12px;letter-spacing:.08em;padding-top:2px;white-space:nowrap}
-.flag.crit .mk{color:var(--crit)} .flag.warn .mk{color:var(--warn)}
-.flag div p+p{margin-top:5px}
-.lic{border:1px solid var(--rule);border-radius:11px;background:var(--panel);overflow:hidden;box-shadow:var(--shadow)}
-.lic+.lic{margin-top:12px}
-.licbar{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center;padding:15px 18px;
-  background:none;border:0;width:100%;text-align:left;color:inherit}
-.licbar:hover{background:var(--panel-2)}
-.licbar:focus-visible{outline:2px solid var(--blue);outline-offset:-2px}
-.licname{display:flex;flex-direction:column;gap:5px;min-width:0}
-.licname strong{font-family:Archivo,sans-serif;font-weight:600;font-size:16.5px}
-.seats{display:flex;align-items:center;gap:9px;font-size:13px;color:var(--ink-2);flex-wrap:wrap}
-.track{width:116px;height:6px;border-radius:3px;background:var(--panel-2);overflow:hidden;flex:none}
-.fill{height:100%;background:var(--blue);display:block}
-.right{display:flex;align-items:center;gap:14px;flex:none}
-.cost{font-family:Archivo,sans-serif;font-weight:600;font-size:15px;text-align:right}
-.cost small{display:block;font-family:"Source Sans 3",sans-serif;font-weight:400;font-size:11.5px;color:var(--ink-3)}
-.chev{color:var(--ink-3);transition:transform .18s}
-.lic.open .chev{transform:rotate(90deg)}
-.people{border-top:1px solid var(--rule);padding:14px 18px 18px;background:var(--panel-2)}
-.plist{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:3px 18px;margin-top:9px}
-.person{display:flex;gap:8px;align-items:baseline;font-size:14px;padding:3px 0;border-bottom:1px dotted var(--rule-2)}
-.person .nm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.tagoff{font-size:10px;font-weight:700;letter-spacing:.06em;color:#fff;background:var(--crit);
-  padding:1px 5px;border-radius:3px;font-family:Archivo,sans-serif}
-.free{color:var(--ok);font-weight:600}
-.scroll{overflow-x:auto;border:1px solid var(--rule);border-radius:11px;background:var(--panel)}
-table{border-collapse:collapse;width:100%;font-size:14.5px}
-th,td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--rule);vertical-align:top}
-th{font-family:Archivo,sans-serif;font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);font-weight:600;white-space:nowrap}
+.delta{font-size:12.5px;font-weight:600;font-family:Archivo,sans-serif}
+.delta.sobe{color:var(--crit)} .delta.desce{color:var(--ok)} .delta.igual{color:var(--ink-3)}
+
+/* avisos */
+.aviso{display:grid;grid-template-columns:auto 1fr auto;gap:14px;padding:15px 17px;border-radius:10px;
+  border:1px solid;align-items:start;background:var(--panel)}
+.aviso.crit{background:var(--crit-soft);border-color:var(--crit)}
+.aviso.warn{background:var(--amber-soft);border-color:var(--amber)}
+.aviso.info{background:var(--blue-soft);border-color:var(--blue)}
+.aviso .mk{font-family:Archivo,sans-serif;font-weight:700;font-size:11px;letter-spacing:.09em;
+  white-space:nowrap;padding-top:3px}
+.aviso.crit .mk{color:var(--crit)} .aviso.warn .mk{color:var(--warn)} .aviso.info .mk{color:var(--blue)}
+.aviso .corpo p+p{margin-top:5px}
+.aviso .grana{font-family:Archivo,sans-serif;font-weight:700;font-size:16px;white-space:nowrap;text-align:right}
+.aviso .grana small{display:block;font-family:"Source Sans 3",sans-serif;font-weight:400;font-size:11px;color:var(--ink-3)}
+@media (max-width:640px){ .aviso{grid-template-columns:1fr} .aviso .grana{text-align:left} }
+
+/* cartao de produto */
+.prod{border:1px solid var(--rule);border-radius:12px;background:var(--panel);box-shadow:var(--shadow);overflow:hidden}
+.prod+.prod{margin-top:13px}
+.prodtopo{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center;padding:16px 18px}
+.prodnome{display:flex;flex-direction:column;gap:6px;min-width:0}
+.prodnome strong{font-family:Archivo,sans-serif;font-weight:600;font-size:17px}
+.tags{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.tag{font-size:11px;font-family:Archivo,sans-serif;font-weight:600;padding:2px 8px;border-radius:5px;
+  background:var(--panel-2);color:var(--ink-2);border:1px solid var(--rule)}
+.tag.anual{background:var(--amber-soft);color:var(--warn);border-color:var(--amber)}
+.tag.mensal{background:var(--blue-soft);color:var(--blue);border-color:var(--blue)}
+.tag.livre{background:var(--ok-soft);color:var(--ok);border-color:var(--ok)}
+.tag.ruim{background:var(--crit-soft);color:var(--crit);border-color:var(--crit)}
+.barra{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--ink-2)}
+.track{width:140px;height:7px;border-radius:4px;background:var(--panel-2);overflow:hidden;flex:none;display:flex}
+.fill{height:100%;background:var(--blue)}
+.fill.vago{background:var(--ok);opacity:.45}
+.valor{text-align:right;font-family:Archivo,sans-serif;font-weight:700;font-size:17px;white-space:nowrap}
+.valor small{display:block;font-family:"Source Sans 3",sans-serif;font-weight:400;font-size:11.5px;color:var(--ink-3)}
+.prodpe{border-top:1px solid var(--rule);background:var(--panel-2);padding:12px 18px;display:flex;
+  flex-wrap:wrap;gap:10px 22px;align-items:center;font-size:13px;color:var(--ink-2)}
+.prodpe b{color:var(--ink)}
+.verquem{font-family:Archivo,sans-serif;font-weight:600;font-size:12.5px;background:none;border:0;
+  color:var(--blue);padding:0;margin-left:auto}
+.quem{border-top:1px solid var(--rule);padding:13px 18px 17px;background:var(--panel-2)}
+.plist{display:grid;grid-template-columns:repeat(auto-fill,minmax(235px,1fr));gap:2px 18px;margin-top:8px}
+.pessoa{display:flex;gap:8px;align-items:baseline;font-size:13.5px;padding:3px 0;border-bottom:1px dotted var(--rule-2)}
+.pessoa .nm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.off{font-size:10px;font-weight:700;color:#fff;background:var(--crit);padding:1px 5px;border-radius:3px;font-family:Archivo,sans-serif}
+
+/* tabela e grafico */
+.caixa{border:1px solid var(--rule);border-radius:12px;background:var(--panel);overflow:hidden}
+.caixa>header{padding:14px 18px;border-bottom:1px solid var(--rule);display:flex;flex-wrap:wrap;
+  gap:6px 14px;align-items:baseline}
+.caixa>header h3{flex:none}
+.caixa>header .why{margin:0}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{padding:9px 14px;text-align:left;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-family:Archivo,sans-serif;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--ink-3);font-weight:600;white-space:nowrap}
 tbody tr:last-child td{border-bottom:0}
 td.r,th.r{text-align:right}
-.why{color:var(--ink-2);font-size:13.5px}
-.chart{border:1px solid var(--rule);border-radius:11px;background:var(--panel);padding:18px 18px 10px}
-.chart svg{display:block;width:100%;height:auto}
-.gline{stroke:var(--rule);stroke-width:1}
-.glabel{fill:var(--ink-3);font-size:9px;font-family:"IBM Plex Mono",monospace}
-.bar{fill:var(--blue)}
-.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
-.acct{border:1px solid var(--rule);border-left:3px solid var(--blue);border-radius:9px;background:var(--panel);
-  padding:17px 19px;display:flex;flex-direction:column;gap:9px}
-.acct.wire{border-left-color:var(--amber)}
-.acct dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:4px 14px;font-size:14px}
-.acct dt{color:var(--ink-3)} .acct dd{margin:0}
-ol.steps{margin:0;padding:0;list-style:none;counter-reset:s;display:flex;flex-direction:column;gap:14px}
-ol.steps li{counter-increment:s;display:grid;grid-template-columns:30px 1fr;gap:14px;align-items:start}
-ol.steps li::before{content:counter(s);font-family:Archivo,sans-serif;font-weight:700;font-size:13px;
-  width:26px;height:26px;border-radius:50%;background:var(--blue-soft);color:var(--blue);display:grid;place-items:center;margin-top:1px}
-ol.steps strong{display:block;font-family:Archivo,sans-serif;font-size:15.5px}
-ol.steps p{color:var(--ink-2);font-size:14.5px;margin-top:2px}
-footer{border-top:1px solid var(--rule);padding-top:18px;color:var(--ink-3);font-size:13.5px;display:flex;flex-direction:column;gap:7px}
+.graf{padding:16px 18px 8px}
+.graf svg{display:block;width:100%;height:auto}
+.gl{stroke:var(--rule);stroke-width:1}
+.gt{fill:var(--ink-3);font-size:9.5px;font-family:"IBM Plex Mono",monospace}
+.leg{display:flex;gap:16px;flex-wrap:wrap;font-size:12.5px;color:var(--ink-2);padding:0 18px 14px}
+.sw{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px}
+
 .gate{border:1px dashed var(--rule-2);border-radius:12px;background:var(--panel);padding:30px 26px;
   display:flex;flex-direction:column;gap:14px;align-items:flex-start}
 .spin{display:inline-block;width:13px;height:13px;border:2px solid var(--rule-2);border-top-color:var(--blue);
   border-radius:50%;animation:gira .8s linear infinite;vertical-align:-2px;margin-right:7px}
 @keyframes gira{to{transform:rotate(360deg)}}
-[hidden]{display:none!important}
+footer{border-top:1px solid var(--rule);padding-top:16px;color:var(--ink-3);font-size:13px;
+  display:flex;flex-direction:column;gap:6px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
 </head>
@@ -161,117 +187,99 @@ footer{border-top:1px solid var(--rule);padding-top:18px;color:var(--ink-3);font
 
 <div class="wrap">
 
-<header>
-  <p class="eyebrow">Homy Química &middot; Tecnologia da Informação</p>
-  <div class="topbar">
-    <h1>Licenças e custos da TI</h1>
-    <div class="who">
-      <span id="quem"></span>
-      <button class="btn ghost" id="btn-sair" hidden type="button">Sair</button>
-    </div>
+<div class="cab">
+  <div>
+    <p class="eyebrow">Homy Química &middot; Tecnologia da Informação</p>
+    <h1>Custos de TI da Homy</h1>
   </div>
-  <p class="lead">Quem tem cada licença, quanto a Azure está gastando com as automações, e onde há dinheiro parado. A página relê o Microsoft 365 sozinha a cada minuto. Nada fica gravado aqui dentro.</p>
-</header>
+  <div class="who"><span id="quem"></span><button class="btn ghost" id="btn-sair" hidden type="button">Sair</button></div>
+</div>
 
 <div class="gate" id="gate">
   <h2>Entre com a sua conta da Homy</h2>
-  <p class="lead">A página lê os dados com a <b>sua</b> permissão. Quem não for da TI não vai enxergar nada, mesmo abrindo o endereço.</p>
+  <p class="lead">A página lê tudo com a <b>sua</b> permissão, no momento em que você abre. Quem não for da TI não enxerga nada.</p>
   <button class="btn" id="btn-entrar" type="button">Entrar com a conta da Homy</button>
   <p class="why" id="gate-erro" hidden></p>
 </div>
 
-<div id="carregando" hidden><p class="lead"><span class="spin"></span><span id="carregando-txt">Consultando o Microsoft 365…</span></p></div>
+<div id="carregando" hidden><p class="lead"><span class="spin"></span><span id="carregando-txt">Consultando…</span></p></div>
 
-<main id="conteudo" hidden style="display:flex;flex-direction:column;gap:44px">
+<main id="conteudo" hidden>
+  <div class="abas" role="tablist" id="abas"></div>
 
-  <div class="figs" id="figs"></div>
-  <section id="alertas" style="gap:12px"></section>
-
-  <section>
-    <div class="sechead">
-      <h2>Licenças que a Homy paga</h2>
-      <p class="lead">Clique numa linha para ver quem está com ela. Quem aparece marcado em vermelho tem a conta bloqueada e continua ocupando assento pago.</p>
-    </div>
-    <div id="licencas"></div>
-    <p class="why">Os preços por assento vêm das faturas da Microsoft, já com imposto. As licenças gratuitas não aparecem aqui porque não custam nada e não têm limite prático.</p>
-  </section>
-
-  <section>
-    <div class="sechead"><h2>Pessoas, e por que “ativo” engana</h2></div>
-    <div class="flag warn">
-      <span class="mk">ATENÇÃO</span>
-      <div>
-        <p><b>O Microsoft 365 não sabe quem ainda trabalha aqui.</b> Ele só sabe se a conta está habilitada ou bloqueada. Agora são <b id="n-ativos"></b> habilitadas e <b id="n-bloq"></b> bloqueadas.</p>
-        <p>O dado que resolveria isso é o <b>último acesso</b> de cada conta, e ele exige a licença <b>Entra ID P1</b>, que a Homy não assina. Enquanto não houver, a varredura é na lista acima, nome por nome.</p>
-      </div>
+  <!-- VISAO GERAL -->
+  <section class="modulo" id="mod-geral" role="tabpanel">
+    <div class="figs" id="figs-geral"></div>
+    <div id="avisos" style="display:flex;flex-direction:column;gap:11px"></div>
+    <div class="caixa">
+      <header><h3>Para onde vai o dinheiro, mês a mês</h3>
+        <p class="why">Licença é assento de pessoa. Automação é consumo da Azure.</p></header>
+      <div class="graf" id="graf-geral"></div>
+      <p class="leg">
+        <span><span class="sw" style="background:var(--blue)"></span>Licenças</span>
+        <span><span class="sw" style="background:var(--teal)"></span>Automação</span>
+      </p>
     </div>
   </section>
 
-  <section>
-    <div class="sechead">
-      <h2>As duas contas de faturação</h2>
-      <p class="lead">A Microsoft cobra a Homy por dois contratos diferentes. Confundir os dois é o que mais atrasa pagamento.</p>
+  <!-- LICENCAS -->
+  <section class="modulo" id="mod-licencas" role="tabpanel" hidden>
+    <div class="figs" id="figs-lic"></div>
+    <div>
+      <h2 style="margin-bottom:12px">Cada produto que a Homy paga</h2>
+      <div id="produtos"></div>
     </div>
-    <div class="two">
-      <div class="acct">
-        <h3>MOSA, as licenças do dia a dia</h3>
-        <dl>
-          <dt>Faturas</dt><dd class="mono">E0101…</dd>
-          <dt>O que entra</dt><dd>Business Standard, Business Basic, Power BI Pro</dd>
-          <dt>Pagamento</dt><dd><b>Cartão, automático</b></dd>
-        </dl>
-        <p class="why">É a maior parte do dinheiro e cuida de si. O problema conhecido aqui é a NFS-e que às vezes não é emitida.</p>
-      </div>
-      <div class="acct wire">
-        <h3>MCA, Azure e Copilot</h3>
-        <dl>
-          <dt>Faturas</dt><dd class="mono">G18… / G19…</dd>
-          <dt>O que entra</dt><dd>Consumo da Azure, Standard + Copilot, Power Automate Premium</dd>
-          <dt>Pagamento</dt><dd><b>Transferência, na mão</b></dd>
-        </dl>
-        <p class="why">Não existe pagamento automático neste contrato, a Microsoft confirmou por escrito. Quem recebe o lembrete de vencimento são os contatos de contas a pagar: <span class="mono">ti@</span> e <span class="mono">fiscal@</span>.</p>
-      </div>
+    <div class="caixa">
+      <header><h3>Quanto cada licença custou por mês</h3>
+        <p class="why">Vem das faturas da Microsoft, não de estimativa. A fatura emitida no dia 2 cobre o mês anterior.</p></header>
+      <div class="graf" id="graf-lic"></div>
+      <p class="leg" id="leg-lic"></p>
     </div>
   </section>
 
-  <section>
-    <div class="sechead">
-      <h2>O que a Azure está cobrando</h2>
-      <p class="lead">Consumo do mês corrente. A Azure só recalcula algumas vezes por dia, então este bloco é relido a cada 10 minutos.</p>
+  <!-- AUTOMACAO -->
+  <section class="modulo" id="mod-automacao" role="tabpanel" hidden>
+    <div class="figs" id="figs-auto"></div>
+    <div class="caixa">
+      <header><h3>Consumo da Azure, mês a mês</h3>
+        <p class="why">Só a conta MCA. Mês corrente é parcial, então comparar com o mês fechado anterior engana.</p></header>
+      <div class="graf" id="graf-auto"></div>
+      <p class="leg" id="leg-auto"></p>
     </div>
-    <div class="chart" id="chart-box"><div id="chart"></div></div>
-    <div class="scroll"><table>
-      <thead><tr><th>Recurso</th><th>Serviço</th><th class="r">Mês corrente</th><th>Para que serve</th></tr></thead>
-      <tbody id="recursos"></tbody>
-    </table></div>
-    <p class="why" id="azure-nota"></p>
+    <div class="caixa">
+      <header><h3>O que está cobrando agora</h3>
+        <p class="why">Mês corrente, recurso por recurso, com o que cada um faz.</p></header>
+      <div class="scroll"><table>
+        <thead><tr><th>Recurso</th><th>Serviço</th><th>Setor</th><th class="r">Mês corrente</th><th>Para que serve</th></tr></thead>
+        <tbody id="tb-recursos"></tbody>
+      </table></div>
+    </div>
   </section>
 
-  <section>
-    <div class="sechead">
-      <h2>Como inativar quem saiu da Homy</h2>
-      <p class="lead">A ordem importa: tirar a licença antes de bloquear deixa a caixa acessível; bloquear sem tirar a licença continua pagando por quem não usa.</p>
+  <!-- CONTRATOS -->
+  <section class="modulo" id="mod-contratos" role="tabpanel" hidden>
+    <div id="avisos-contrato" style="display:flex;flex-direction:column;gap:11px"></div>
+    <div class="caixa">
+      <header><h3>Quando cada contrato renova</h3>
+        <p class="why">Em contrato anual você só consegue reduzir assentos na data de renovação. Depois dela, fica preso por mais um ano.</p></header>
+      <div class="scroll"><table>
+        <thead><tr><th>Produto</th><th>Termo</th><th>Renova em</th><th class="r">Faltam</th><th class="r">Assentos</th><th class="r">Ociosos</th><th class="r">Preso até lá</th><th>O que considerar</th></tr></thead>
+        <tbody id="tb-contratos"></tbody>
+      </table></div>
     </div>
-    <ol class="steps">
-      <li><div><strong>Bloqueie o acesso primeiro</strong><p>Utilizadores, Utilizadores ativos, abra a pessoa, aba Conta, <b>Bloquear este utilizador</b>. Ela para de entrar em tudo na hora, e nada é apagado.</p></div></li>
-      <li><div><strong>Encerre as sessões abertas</strong><p>Na mesma tela, <b>Fechar sessão de todas as sessões</b>. Sem isso, quem já estava logado no celular segue lendo e-mail por horas.</p></div></li>
-      <li><div><strong>Troque a palavra-passe</strong><p>Garante que nenhum dispositivo guardado volte a conectar.</p></div></li>
-      <li><div><strong>Dê acesso à caixa a quem vai assumir</strong><p>Antes de mexer na licença. O gestor da área costuma precisar do histórico.</p></div></li>
-      <li><div><strong>Só então retire as licenças</strong><p>Aba Licenças e aplicações, desmarque tudo e guarde. O assento volta para o bolo na hora.</p></div></li>
-      <li><div><strong>Se for preciso guardar o e-mail, converta em caixa partilhada</strong><p>Caixa partilhada de até 50 GB <b>não consome licença</b>.</p></div></li>
-    </ol>
-    <div class="flag crit">
-      <span class="mk">CUIDADO</span>
-      <div>
-        <p><b>Não apague a conta.</b> Ao apagar, a caixa e o OneDrive entram numa contagem de 30 dias e depois somem. Bloquear preserva tudo e já corta o acesso.</p>
-        <p>Confira antes se a pessoa é dona de algum fluxo, grupo do Teams ou site. Bloquear o dono de um fluxo do Power Automate derruba o fluxo.</p>
+    <div class="caixa">
+      <header><h3>Anual ou mensal?</h3></header>
+      <div style="padding:16px 18px" class="why">
+        <p><b>Anual costuma ser mais barato por assento</b>, e é por isso que a Homy está nele. O preço que você vê aqui já é o do plano contratado.</p>
+        <p style="margin-top:7px"><b>O custo do anual é a rigidez.</b> Assento que sobra continua sendo pago até a renovação, e assento novo entra proporcional. Vale anual quando o número de pessoas é estável, e mensal quando a equipe oscila ou o produto ainda está em teste.</p>
+        <p style="margin-top:7px"><b>A regra prática:</b> se um produto aparece com assento ocioso toda vez que você abre esta página, ele é candidato a reduzir na próxima renovação. Se o número de pessoas muda todo mês, é candidato a mensal.</p>
       </div>
     </div>
   </section>
 
   <footer>
-    <p><b>Nenhum dado está gravado neste arquivo.</b> O código é público, os números não: eles chegam do Microsoft 365 e da Azure depois que você entra, e somem quando você fecha a aba.</p>
-    <p>Fontes: Microsoft Graph e Azure Cost Management, lidos com a sua permissão.</p>
+    <p><b>Nada fica gravado nesta página.</b> Licenças e consumo são lidos ao vivo com a sua permissão. O histórico de licença vem de um arquivo no repositório, montado a partir das faturas, porque a Microsoft não guarda histórico de assentos.</p>
+    <p id="rodape-fonte"></p>
   </footer>
 </main>
 </div>
@@ -285,22 +293,10 @@ const CLIENT_ID = "cd4e6552-0c9d-4586-bdd3-6f23341a3cc2";
 const TENANT_ID = "a2850abc-334a-4805-b6b2-420b4aef68a9";
 const GRAPH_SCOPES = ["User.Read", "Directory.Read.All"];
 const ARM_SCOPES   = ["https://management.azure.com/user_impersonation"];
-
-/* Com que frequencia cada fonte e relida.
-   O Graph e barato. A Azure e limitada e so recalcula algumas vezes por dia,
-   entao ler de minuto em minuto so serviria para tomar bloqueio por excesso. */
 const PASSO_GRAPH =  60 * 1000;
 const PASSO_AZURE = 600 * 1000;
-const ESPERA_APOS_ERRO = 120 * 1000;
+const ESPERA_ERRO = 120 * 1000;
 
-/* Preco por assento, com imposto, conforme a ultima fatura da Microsoft. */
-const PRECO = {
-  O365_BUSINESS_PREMIUM: 83.50,
-  O365_BUSINESS_ESSENTIALS: 48.10,
-  BUSINESS_STANDARD_AND_COPILOT_FOR_BUSINESS: 183.86,
-  POWER_BI_PRO: 93.50,
-  POWERAUTOMATE_ATTENDED_RPA: 117.34
-};
 const NOME = {
   O365_BUSINESS_PREMIUM: "Microsoft 365 Business Standard",
   O365_BUSINESS_ESSENTIALS: "Microsoft 365 Business Basic",
@@ -308,12 +304,22 @@ const NOME = {
   POWER_BI_PRO: "Power BI Pro",
   POWERAUTOMATE_ATTENDED_RPA: "Power Automate Premium"
 };
+/* Preco por assento com imposto, conforme a ultima fatura. */
+const PRECO = {
+  O365_BUSINESS_PREMIUM: 83.50, O365_BUSINESS_ESSENTIALS: 48.10,
+  BUSINESS_STANDARD_AND_COPILOT_FOR_BUSINESS: 183.86, POWER_BI_PRO: 93.50,
+  POWERAUTOMATE_ATTENDED_RPA: 117.34
+};
+/* Qual serie do historico de faturas corresponde a cada SKU. */
+const SERIE = { O365_BUSINESS_PREMIUM:"standard", O365_BUSINESS_ESSENTIALS:"basic", POWER_BI_PRO:"powerbi" };
 const PAGAS = Object.keys(PRECO);
 
 const EXPLICA = [
-  ["pg-homylda",                         "Banco da Homylda. Cobra por hora ligada, use ou não."],
+  ["pg-homylda",                         "Banco da Homylda. Cobra por HORA LIGADA, use ou não."],
   ["sthomylda",                          "Arquivos da Homylda."],
   ["kv-homylda",                         "Cofre de segredos da Homylda."],
+  ["bot-homylda",                        "O agente da Homylda no Teams."],
+  ["fn-homylda",                         "Funções da Homylda."],
   ["doc-fornecedores-receber",           "Lê os e-mails dos fornecedores, 1x por dia."],
   ["doc-fornecedores-ler-validade",      "Lê a validade dentro do PDF."],
   ["doc-fornecedores-lista-escrever",    "Grava linha na lista do SharePoint. A mais chamada."],
@@ -326,347 +332,407 @@ const EXPLICA = [
   ["doc-fornecedores-sp-request",        "Chamada genérica ao SharePoint."],
   ["doc-fornecedores",                   "Automação dos documentos de fornecedores."],
   ["stdocfornecedores",                  "Arquivos da automação de documentos."],
-  ["teste-",                             "Teste de rede. Pode ser apagado se não estiver em uso."]
+  ["ponto-controlid",                    "Integração do relógio de ponto."],
+  ["teste-",                             "Teste de rede. Candidato a apagar se não estiver em uso."]
 ];
 const SETOR = [["rg-doc-fornecedores","Suprimentos"],["rg-homylda","TI / Homylda"],
-               ["copilot-credits-rg","TI / Cowork"],["defaultresourcegroup","TI / infraestrutura"],
-               ["rg-teste-rede","Testes"]];
+               ["copilot-credits-rg","TI / Cowork"],["defaultresourcegroup","TI / infra"],
+               ["rg-ponto-controlid","RH / ponto"],["rg-teste-rede","Testes"]];
 
 const $ = s => document.querySelector(s);
 const brl = v => "R$ " + (v||0).toLocaleString("pt-BR",{minimumFractionDigits:2,maximumFractionDigits:2});
+const brl0 = v => "R$ " + Math.round(v||0).toLocaleString("pt-BR");
 const esc = s => String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const explica = n => (EXPLICA.find(e => n.indexOf(e[0])===0)||[,"Recurso da Azure."])[1];
 const setor   = g => (SETOR.find(e => (g||"").toLowerCase().indexOf(e[0])===0)||[,g||"sem grupo"])[1];
+const MES = ["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"];
+const rotuloMes = ym => { const [a,m]=ym.split("-"); return MES[+m-1]+"/"+a.slice(2); };
+const dias = d => Math.ceil((d - new Date())/86400000);
 
 const msalInstance = new msal.PublicClientApplication({
-  auth: { clientId: CLIENT_ID,
-          authority: "https://login.microsoftonline.com/" + TENANT_ID,
-          redirectUri: window.location.origin + window.location.pathname },
-  cache: { cacheLocation: "sessionStorage" }
+  auth:{ clientId:CLIENT_ID, authority:"https://login.microsoftonline.com/"+TENANT_ID,
+         redirectUri: window.location.origin + window.location.pathname },
+  cache:{ cacheLocation:"sessionStorage" }
 });
 
-let conta = null;
-let deFundo = false;        // true quando a leitura veio do relogio, nao de um clique
-let ultimoOk = null;        // quando a ultima leitura completa deu certo
-let azureDepoisDe = 0;      // so rele a Azure a partir deste instante
-let azureCache = null;      // ultimo resultado bom da Azure
-let azureErro = null;
-let emCurso = false;
-let tmLoop = null, tmRelogio = null;
+let conta=null, deFundo=false, ultimoOk=null, emCurso=false;
+let azureDepois=0, azureCache=null, azureErro=null, histLic=null;
+let tmLoop=null, tmRel=null;
 
-/* ------------- faixa de estado ------------- */
+/* ---------- estado ---------- */
+function vivo(){ const b=$("#estado"); b.hidden=false; b.classList.remove("parado"); b.classList.add("vivo");
+  $("#selo").innerHTML='<span class="pulso"></span>AO VIVO';
+  $("#estado-det").textContent="relendo sozinho a cada minuto"; rel(); }
+function parado(m){ const b=$("#estado"); b.hidden=false; b.classList.remove("vivo"); b.classList.add("parado");
+  $("#selo").innerHTML='<span class="xis">&#10006;</span>SEM ATUALIZAR';
+  $("#estado-det").textContent=m||"não consegui reler"; rel(); }
+function rel(){ const el=$("#relogio"); if(!ultimoOk){el.textContent="";return;}
+  const s=Math.round((Date.now()-ultimoOk.getTime())/1000);
+  el.textContent = s<10?"lido agora": s<60?"lido há "+s+" s": s<3600?"lido há "+Math.round(s/60)+" min"
+    : "lido às "+ultimoOk.toLocaleTimeString("pt-BR"); }
 
-function vivo(){
-  const b = $("#estado");
-  b.hidden = false; b.classList.remove("parado"); b.classList.add("vivo");
-  $("#selo").innerHTML = '<span class="pulso"></span>AO VIVO';
-  $("#estado-det").textContent = "relendo sozinho a cada minuto";
-  relogio();
-}
-function parado(motivo){
-  const b = $("#estado");
-  b.hidden = false; b.classList.remove("vivo"); b.classList.add("parado");
-  $("#selo").innerHTML = '<span class="xis">&#10006;</span>SEM ATUALIZAR';
-  $("#estado-det").textContent = motivo || "não consegui reler";
-  relogio();
-}
-function relogio(){
-  const el = $("#relogio");
-  if (!ultimoOk){ el.textContent = ""; return; }
-  const s = Math.round((Date.now() - ultimoOk.getTime())/1000);
-  el.textContent = s < 10 ? "lido agora"
-    : s < 60 ? "lido há " + s + " s"
-    : s < 3600 ? "lido há " + Math.round(s/60) + " min"
-    : "lido às " + ultimoOk.toLocaleTimeString("pt-BR");
-}
+/* ---------- acesso ---------- */
+async function token(sc){ const req={scopes:sc,account:conta};
+  try{ return (await msalInstance.acquireTokenSilent(req)).accessToken; }
+  catch(e){ if(deFundo) throw new Error("a sessão expirou, clique em Atualizar agora");
+            return (await msalInstance.acquireTokenPopup(req)).accessToken; } }
+async function graph(p, beta){
+  const t=await token(GRAPH_SCOPES);
+  let url="https://graph.microsoft.com/"+(beta?"beta":"v1.0")+p, out=[];
+  while(url){ const r=await fetch(url,{headers:{Authorization:"Bearer "+t}});
+    if(!r.ok) throw new Error("Microsoft 365 respondeu "+r.status);
+    const j=await r.json(); out=out.concat(j.value||[j]); url=j["@odata.nextLink"]||null; }
+  return out; }
+async function arm(url,corpo){
+  const t=await token(ARM_SCOPES);
+  const r=await fetch(url,{method:corpo?"POST":"GET",
+    headers:{Authorization:"Bearer "+t,"Content-Type":"application/json"},
+    body:corpo?JSON.stringify(corpo):undefined});
+  if(r.status===429) throw new Error("a Azure pediu para esperar (limite de consultas)");
+  if(!r.ok) throw new Error("Azure respondeu "+r.status);
+  return r.json(); }
 
-/* ------------- acesso ------------- */
-
-async function token(scopes){
-  const req = { scopes, account: conta };
-  try { return (await msalInstance.acquireTokenSilent(req)).accessToken; }
-  catch(e){
-    // Numa releitura automatica nao abrimos janela: o navegador bloquearia,
-    // e piscar uma janela de login sozinho assusta mais do que ajuda.
-    if (deFundo) throw new Error("a sessão expirou, clique em Atualizar agora");
-    return (await msalInstance.acquireTokenPopup(req)).accessToken;
-  }
-}
-
-async function graph(caminho){
-  const t = await token(GRAPH_SCOPES);
-  let url = "https://graph.microsoft.com/v1.0" + caminho, saida = [];
-  while (url){
-    const r = await fetch(url, { headers:{ Authorization:"Bearer "+t } });
-    if (!r.ok) throw new Error("Microsoft 365 respondeu " + r.status);
-    const j = await r.json();
-    saida = saida.concat(j.value || [j]);
-    url = j["@odata.nextLink"] || null;
-  }
-  return saida;
-}
-
-async function arm(url, corpo){
-  const t = await token(ARM_SCOPES);
-  const r = await fetch(url, {
-    method: corpo ? "POST" : "GET",
-    headers: { Authorization:"Bearer "+t, "Content-Type":"application/json" },
-    body: corpo ? JSON.stringify(corpo) : undefined
-  });
-  if (r.status === 429) throw new Error("a Azure pediu para esperar (limite de consultas)");
-  if (!r.ok) throw new Error("Azure respondeu " + r.status);
-  return r.json();
-}
-
-/* ------------- desenho ------------- */
-
-function desenhaLicencas(skus, users){
-  const lista = skus.filter(s => PAGAS.indexOf(s.skuPartNumber) >= 0)
-    .map(s => {
-      const pessoas = users.filter(u => (u.assignedLicenses||[]).some(l => l.skuId === s.skuId))
-        .map(u => ({ n:(u.displayName||"").replace(/\s*\|\s*Homy Química\s*$/i,""), u:u.userPrincipalName, a:!!u.accountEnabled }))
-        .sort((a,b)=>a.n.localeCompare(b.n,"pt-BR"));
-      const saldo = s.prepaidUnits.enabled - s.consumedUnits;
-      return { sku:s.skuPartNumber, nome:NOME[s.skuPartNumber]||s.skuPartNumber,
-               compradas:s.prepaidUnits.enabled, usadas:s.consumedUnits,
-               // Saldo negativo nao e "assento livre negativo": e gente usando
-               // licenca que a Homy nao tem mais. Os dois casos sao separados
-               // de proposito, senao um anula o outro na conta de cima.
-               livres: Math.max(0, saldo),
-               excedente: Math.max(0, -saldo),
-               suspensos: s.prepaidUnits.suspended || 0,
-               preco:PRECO[s.skuPartNumber], pessoas };
-    }).sort((a,b)=> (b.compradas*b.preco)-(a.compradas*a.preco));
-
-  const abertas = new Set();
-  document.querySelectorAll(".lic.open .licbar").forEach(b=>{
-    const t = b.querySelector("strong"); if (t) abertas.add(t.textContent);
-  });
-
-  $("#licencas").innerHTML = lista.map((l,i)=>{
-    const pct = l.compradas ? Math.round(l.usadas/l.compradas*100) : 0;
-    const aberta = abertas.has(l.nome);
-    return '<div class="lic'+(aberta?' open':'')+'" id="lic'+i+'">'+
-      '<button class="licbar" type="button" aria-expanded="'+(aberta?'true':'false')+'" aria-controls="pp'+i+'">'+
-      '<span class="licname"><strong>'+esc(l.nome)+'</strong><span class="seats">'+
-        '<span class="track"><span class="fill" style="width:'+pct+'%"></span></span>'+
-        '<span class="num">'+l.usadas+' de '+l.compradas+'</span>'+
-        (l.livres>0?'<span class="free num">'+l.livres+' livre'+(l.livres>1?'s':'')+'</span>':'')+
-      '</span></span>'+
-      '<span class="right"><span class="cost num">'+brl(l.compradas*l.preco)+
-        '<small>'+brl(l.preco)+' por assento</small></span><span class="chev">&#9654;</span></span>'+
-      '</button><div class="people" id="pp'+i+'"'+(aberta?'':' hidden')+'><p class="eyebrow">Quem está com ela</p>'+
-      '<div class="plist">'+l.pessoas.map(p=>'<div class="person"><span class="nm" title="'+esc(p.u)+'">'+
-        esc(p.n)+'</span>'+(p.a?'':'<span class="tagoff">BLOQUEADO</span>')+'</div>').join('')+
-      '</div></div></div>';
-  }).join('');
-
-  document.querySelectorAll(".licbar").forEach(b=>{
-    b.addEventListener("click", ()=>{
-      const cx = document.getElementById(b.getAttribute("aria-controls"));
-      const abrir = cx.hidden;
-      cx.hidden = !abrir;
-      b.setAttribute("aria-expanded", abrir ? "true" : "false");
-      b.parentNode.classList.toggle("open", abrir);
+/* ---------- graficos ---------- */
+function barras(alvo, series, rotulos, cores){
+  const W=960,H=210,L=52,R=12,T=16,B=28;
+  const totais = rotulos.map((_,i)=> series.reduce((s,se)=>s+(se.v[i]||0),0));
+  const max = Math.max.apply(null, totais.concat([1]));
+  const passo = Math.pow(10, Math.floor(Math.log10(max/3)));
+  const step = Math.ceil(max/3/passo)*passo, topo = step*3;
+  const iw=W-L-R, ih=H-T-B, bw=iw/rotulos.length;
+  let s='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Custo por mês em reais">';
+  for(let g=0;g<=3;g++){ const y=T+ih-(step*g/topo)*ih;
+    s+='<line class="gl" x1="'+L+'" y1="'+y.toFixed(1)+'" x2="'+(W-R)+'" y2="'+y.toFixed(1)+'"/>'+
+       '<text class="gt" x="'+(L-7)+'" y="'+(y+3).toFixed(1)+'" text-anchor="end">'+
+       (step*g>=1000? Math.round(step*g/1000)+"k" : Math.round(step*g))+'</text>'; }
+  rotulos.forEach((rot,i)=>{
+    let acc=0;
+    series.forEach((se,k)=>{
+      const v=se.v[i]||0; if(v<=0) return;
+      const hh=(v/topo)*ih, y=T+ih-((acc+v)/topo)*ih;
+      s+='<rect x="'+(L+i*bw+bw*0.2).toFixed(1)+'" y="'+y.toFixed(1)+'" width="'+(bw*0.6).toFixed(1)+
+         '" height="'+Math.max(hh,1).toFixed(1)+'" fill="'+cores[k]+'" rx="1.5">'+
+         '<title>'+esc(rot)+' · '+esc(se.nome)+': '+brl(v)+'</title></rect>';
+      acc+=v;
     });
+    s+='<text class="gt" x="'+(L+i*bw+bw/2).toFixed(1)+'" y="'+(H-10)+'" text-anchor="middle">'+esc(rot)+'</text>';
+    if(totais[i]>0) s+='<text class="gt" x="'+(L+i*bw+bw/2).toFixed(1)+'" y="'+
+      (T+ih-(totais[i]/topo)*ih-5).toFixed(1)+'" text-anchor="middle">'+brl0(totais[i]).replace("R$ ","")+'</text>';
   });
-  return lista;
+  $(alvo).innerHTML = s+'</svg>';
+}
+function deltaHtml(atual, anterior){
+  if(anterior==null || anterior===0) return '';
+  const p=(atual-anterior)/anterior*100;
+  if(Math.abs(p)<0.5) return '<span class="delta igual">sem mudança</span>';
+  return '<span class="delta '+(p>0?'sobe':'desce')+'">'+(p>0?'▲ ':'▼ ')+Math.abs(p).toFixed(1)+'% vs mês anterior</span>';
 }
 
-function desenhaAlertas(lista){
-  const presos = [];
-  lista.forEach(l => l.pessoas.forEach(p => { if(!p.a) presos.push({p:p.n, l:l.nome, v:l.preco}); }));
-  const comLivre = lista.filter(l => l.livres > 0);
-  const quebradas = lista.filter(l => l.excedente > 0 || l.suspensos > 0);
-  let h = "";
-  if (quebradas.length){
-    h += '<div class="flag crit"><span class="mk">ASSINATURA PARADA</span><div>'+
-      quebradas.map(l=>'<p><b>'+esc(l.nome)+'</b>: a Homy tem <b>'+l.compradas+
-        '</b> assento'+(l.compradas===1?'':'s')+' válido'+(l.compradas===1?'':'s')+
-        ' e <b>'+l.usadas+'</b> pessoa'+(l.usadas===1?'':'s')+' com a licença atribuída'+
-        (l.suspensos>0 ? ', e a assinatura está <b>suspensa</b>' : '')+
-        '. Quem depende dela para de funcionar.</p>').join('')+
-      '<p>Suspensa quer dizer que o prazo venceu sem renovar. Há um período de carência antes de a Microsoft apagar os dados, então isso é para resolver agora, não depois.</p></div></div>';
-  }
-  if (presos.length){
-    const perdido = presos.reduce((s,x)=>s+(x.v||0),0);
-    h += '<div class="flag crit"><span class="mk">DINHEIRO PARADO</span><div><p><b>'+presos.length+
-      (presos.length>1?' contas bloqueadas ainda ocupam':' conta bloqueada ainda ocupa')+' licença paga.</b> '+
-      presos.map(x=>esc(x.p)+' segura uma '+esc(x.l)).join('; ')+'.</p>'+
-      '<p>São '+brl(perdido)+' por mês por assento que ninguém usa. Retirar a licença devolve o assento na hora, sem apagar nada da conta.</p></div></div>';
-  }
-  if (comLivre.length){
-    h += '<div class="flag warn"><span class="mk">JÁ PAGO, SEM DONO</span><div><p><b>'+
-      comLivre.reduce((s,l)=>s+l.livres,0)+' assentos já comprados estão sem ninguém.</b> '+
-      comLivre.map(l=>l.livres+' de '+esc(l.nome)).join(', ')+
-      '. Dá para atribuir sem comprar nada.</p></div></div>';
-  }
-  $("#alertas").innerHTML = h;
-}
-
-function desenhaChart(dias){
-  if (!dias || !dias.length){ $("#chart-box").hidden = true; return; }
-  $("#chart-box").hidden = false;
-  const W=920,H=190,L=38,R=10,T=14,B=26;
-  const max = Math.max.apply(null, dias.map(d=>d.v));
-  const passo = Math.max(5, Math.ceil(max/4/5)*5), topo = passo*4;
-  const iw=W-L-R, ih=H-T-B, bw=iw/dias.length;
-  let s = '<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Gasto diário da Azure no mês corrente, em reais">';
-  for (let g=0; g<=4; g++){
-    const y = T + ih - (passo*g/topo)*ih;
-    s += '<line class="gline" x1="'+L+'" y1="'+y.toFixed(1)+'" x2="'+(W-R)+'" y2="'+y.toFixed(1)+'"/>'+
-         '<text class="glabel" x="'+(L-7)+'" y="'+(y+3).toFixed(1)+'" text-anchor="end">'+(passo*g)+'</text>';
-  }
-  dias.forEach((d,i)=>{
-    const hh=(d.v/topo)*ih, bx=L+i*bw+bw*0.18, by=T+ih-hh;
-    s += '<rect class="bar" x="'+bx.toFixed(1)+'" y="'+by.toFixed(1)+'" width="'+(bw*0.64).toFixed(1)+
-         '" height="'+Math.max(hh,1).toFixed(1)+'" rx="1.5"><title>Dia '+d.d+': '+brl(d.v)+'</title></rect>'+
-         '<text class="glabel" x="'+(L+i*bw+bw/2).toFixed(1)+'" y="'+(H-9)+'" text-anchor="middle">'+d.d+'</text>';
-  });
-  $("#chart").innerHTML = s + '</svg>';
-}
-
-function desenhaAzure(){
-  const recursos = azureCache ? azureCache.recursos : [];
-  $("#recursos").innerHTML = recursos.length
-    ? recursos.map(r=>'<tr><td class="mono">'+esc(r.nome)+'</td><td>'+esc(r.svc)+
-        '</td><td class="r num">'+brl(r.v)+'</td><td class="why">'+esc(explica(r.nome))+
-        '<br><span class="eyebrow">'+esc(setor(r.grupo))+'</span></td></tr>').join('')
-    : '<tr><td colspan="4" class="why">'+(azureErro
-        ? 'Não consegui ler o consumo da Azure: '+esc(azureErro)+'. Isso costuma ser falta de permissão de leitura na assinatura, não defeito da página.'
-        : 'Nenhum gasto registrado no mês corrente.')+'</td></tr>';
-  desenhaChart(azureCache ? azureCache.dias : null);
-  $("#azure-nota").textContent = azureCache
-    ? "O valor da Azure é pré-imposto. A nota fiscal sai sobre o total da fatura, que vem um pouco maior."
-    : "";
-}
-
+/* ---------- Azure ---------- */
 async function lerAzure(){
-  const subs = (await arm("https://management.azure.com/subscriptions?api-version=2022-12-01")).value || [];
-  const sub = subs.find(s=>s.state==="Enabled") || subs[0];
-  if (!sub) throw new Error("nenhuma assinatura visível para a sua conta");
-  const url = "https://management.azure.com/subscriptions/"+sub.subscriptionId+
-              "/providers/Microsoft.CostManagement/query?api-version=2023-11-01";
-  const agg = { totalCost: { name:"Cost", function:"Sum" } };
-
-  const porRec = await arm(url, { type:"ActualCost", timeframe:"MonthToDate",
+  const subs=(await arm("https://management.azure.com/subscriptions?api-version=2022-12-01")).value||[];
+  const sub=subs.find(s=>s.state==="Enabled")||subs[0];
+  if(!sub) throw new Error("nenhuma assinatura visível para a sua conta");
+  const url="https://management.azure.com/subscriptions/"+sub.subscriptionId+
+            "/providers/Microsoft.CostManagement/query?api-version=2023-11-01";
+  const agg={ totalCost:{ name:"Cost", function:"Sum" } };
+  const de=new Date(); de.setMonth(de.getMonth()-11); de.setDate(1);
+  const hist=await arm(url,{ type:"ActualCost", timeframe:"Custom",
+    timePeriod:{ from:de.toISOString().slice(0,10)+"T00:00:00Z", to:new Date().toISOString().slice(0,10)+"T23:59:59Z" },
+    dataset:{ granularity:"Monthly", aggregation:agg, grouping:[{type:"Dimension",name:"ResourceGroupName"}] }});
+  const porMes={};
+  (hist.properties.rows||[]).forEach(r=>{
+    const raw=String(r[1]); const ym = raw.indexOf("-")>0 ? raw.slice(0,7) : raw.slice(0,4)+"-"+raw.slice(4,6);
+    const g=setor(r[2]);
+    porMes[ym]=porMes[ym]||{}; porMes[ym][g]=(porMes[ym][g]||0)+(+r[0]);
+  });
+  const rec=await arm(url,{ type:"ActualCost", timeframe:"MonthToDate",
     dataset:{ granularity:"None", aggregation:agg,
       grouping:[{type:"Dimension",name:"ResourceId"},{type:"Dimension",name:"MeterCategory"},
-                {type:"Dimension",name:"ResourceGroupName"}] } });
-  const recursos = (porRec.properties.rows||[]).map(r=>({
-    v:+r[0], nome:String(r[1]).split("/").pop(), svc:r[2], grupo:r[3]
-  })).filter(r=>r.v>0).sort((a,b)=>b.v-a.v);
-
-  const porDia = await arm(url, { type:"ActualCost", timeframe:"MonthToDate",
-    dataset:{ granularity:"Daily", aggregation:agg } });
-  const mapa = {};
-  (porDia.properties.rows||[]).forEach(r=>{
-    const d = String(r[1]).slice(6,8); mapa[d] = (mapa[d]||0) + (+r[0]);
-  });
-  const dias = Object.keys(mapa).sort().map(d=>({d, v:+mapa[d].toFixed(2)}));
-  return { recursos, dias, total: recursos.reduce((s,r)=>s+r.v,0) };
+                {type:"Dimension",name:"ResourceGroupName"}] }});
+  const recursos=(rec.properties.rows||[]).map(r=>({v:+r[0],nome:String(r[1]).split("/").pop(),svc:r[2],grupo:r[3]}))
+    .filter(r=>r.v>0).sort((a,b)=>b.v-a.v);
+  return { porMes, recursos, total:recursos.reduce((s,r)=>s+r.v,0) };
 }
 
-/* ------------- ciclo ------------- */
+/* ---------- modulos ---------- */
+function montaLicencas(skus, users, subs){
+  return skus.filter(s=>PAGAS.indexOf(s.skuPartNumber)>=0).map(s=>{
+    const sub=subs.find(x=>x.skuId===s.skuId)||{};
+    const saldo=s.prepaidUnits.enabled - s.consumedUnits;
+    const cri=sub.createdDateTime?new Date(sub.createdDateTime):null;
+    const ren=sub.nextLifecycleDateTime?new Date(sub.nextLifecycleDateTime):null;
+    const janela=(cri&&ren)?Math.round((ren-cri)/86400000):0;
+    const pessoas=users.filter(u=>(u.assignedLicenses||[]).some(l=>l.skuId===s.skuId))
+      .map(u=>({n:(u.displayName||"").replace(/\s*\|\s*Homy Química\s*$/i,""),u:u.userPrincipalName,a:!!u.accountEnabled}))
+      .sort((a,b)=>a.n.localeCompare(b.n,"pt-BR"));
+    return { sku:s.skuPartNumber, nome:NOME[s.skuPartNumber]||s.skuPartNumber,
+      compradas:s.prepaidUnits.enabled, usadas:s.consumedUnits,
+      livres:Math.max(0,saldo), excedente:Math.max(0,-saldo),
+      suspensa:(sub.status==="Suspended"), status:sub.status||"?",
+      preco:PRECO[s.skuPartNumber], serie:SERIE[s.skuPartNumber]||null,
+      renova:ren, termo: janela>=330?"anual" : janela>=25?"mensal" : "?",
+      pessoas };
+  }).sort((a,b)=>(b.compradas*b.preco)-(a.compradas*a.preco));
+}
 
+function desenhaProdutos(lista){
+  $("#produtos").innerHTML = lista.map((l,i)=>{
+    const usoPct = l.compradas? (l.usadas/l.compradas*100):0;
+    const livrePct = l.compradas? (l.livres/l.compradas*100):0;
+    const tags = [
+      l.termo!=="?" ? '<span class="tag '+l.termo+'">'+(l.termo==="anual"?"contrato anual":"mensal")+'</span>' : '',
+      l.renova ? '<span class="tag">renova '+l.renova.toLocaleDateString("pt-BR")+'</span>' : '',
+      l.livres>0 ? '<span class="tag livre">'+l.livres+' sem dono</span>' : '',
+      l.suspensa ? '<span class="tag ruim">suspensa</span>' : ''
+    ].join('');
+    return '<div class="prod"><div class="prodtopo">'+
+      '<div class="prodnome"><strong>'+esc(l.nome)+'</strong>'+
+        '<div class="barra"><span class="track">'+
+          '<span class="fill" style="width:'+usoPct.toFixed(1)+'%"></span>'+
+          '<span class="fill vago" style="width:'+livrePct.toFixed(1)+'%"></span></span>'+
+        '<span class="num">'+l.usadas+' de '+l.compradas+' assentos</span></div>'+
+        '<div class="tags">'+tags+'</div></div>'+
+      '<div class="valor">'+brl(l.compradas*l.preco)+'<small>'+brl(l.preco)+' por assento, por mês</small></div>'+
+      '</div><div class="prodpe">'+
+        (l.livres>0 ? '<span><b>'+brl(l.livres*l.preco)+'</b> por mês em assento sem dono</span>' : '<span>todos os assentos em uso</span>')+
+        '<button class="verquem" type="button" data-i="'+i+'">ver quem está com ela ('+l.pessoas.length+')</button>'+
+      '</div><div class="quem" id="quem'+i+'" hidden><p class="eyebrow">Quem está com ela</p><div class="plist">'+
+        l.pessoas.map(p=>'<div class="pessoa"><span class="nm" title="'+esc(p.u)+'">'+esc(p.n)+'</span>'+
+          (p.a?'':'<span class="off">BLOQUEADO</span>')+'</div>').join('')+
+      '</div></div></div>';
+  }).join('');
+  document.querySelectorAll(".verquem").forEach(b=>b.addEventListener("click",()=>{
+    const c=document.getElementById("quem"+b.dataset.i); c.hidden=!c.hidden;
+    b.textContent=(c.hidden?"ver":"esconder")+" quem está com ela ("+c.querySelectorAll(".pessoa").length+")";
+  }));
+}
+
+function avisos(lista, azureMeses){
+  const A=[];
+  // 1. assinatura suspensa ou com mais gente do que assento
+  lista.filter(l=>l.suspensa||l.excedente>0).forEach(l=>{
+    A.push({n:"crit",mk:"PARADA",t:"<b>"+esc(l.nome)+"</b> está "+(l.suspensa?"suspensa":"com mais gente do que assento")+
+      ": "+l.compradas+" assento"+(l.compradas===1?"":"s")+" válido"+(l.compradas===1?"":"s")+" e "+l.usadas+" pessoa"+(l.usadas===1?"":"s")+
+      " com a licença. Quem depende dela parou de funcionar.",
+      t2:"Assinatura suspensa tem carência antes de a Microsoft apagar os dados. É para resolver agora.", g:null});
+  });
+  // 2. assento ocioso, e o quanto fica preso ate a renovacao
+  lista.filter(l=>l.livres>0).forEach(l=>{
+    const d = l.renova ? dias(l.renova) : null;
+    const preso = (l.termo==="anual" && d>0) ? l.livres*l.preco*(d/30) : l.livres*l.preco;
+    A.push({n:l.termo==="anual"?"warn":"info", mk:"ASSENTO SEM DONO",
+      t:"<b>"+l.livres+" assento"+(l.livres>1?"s":"")+" de "+esc(l.nome)+"</b> está"+(l.livres>1?"o":"")+
+        " pago e sem ninguém. Dá para atribuir sem comprar nada.",
+      t2: l.termo==="anual"
+        ? "Como o contrato é anual, só dá para devolver esse assento na renovação, em "+l.renova.toLocaleDateString("pt-BR")+". Até lá ele é pago de qualquer jeito."
+        : "Como é mensal, dá para reduzir já no próximo ciclo.",
+      g:preso, gl:(l.termo==="anual"?"preso até a renovação":"por mês")});
+  });
+  // 3. renovacao chegando
+  lista.filter(l=>l.renova && dias(l.renova)<=45 && dias(l.renova)>=0).forEach(l=>{
+    const d=dias(l.renova);
+    A.push({n:d<=15?"crit":"warn", mk:"RENOVA EM "+d+"D",
+      t:"<b>"+esc(l.nome)+"</b> renova em <b>"+l.renova.toLocaleDateString("pt-BR")+"</b>"+
+        (l.termo==="anual"?", por mais um ano":"")+".",
+      t2: l.termo==="anual"
+        ? "É a única janela do ano para mudar quantidade de assento ou trocar para mensal. Passou a data, fica como está até "+
+          new Date(l.renova.getFullYear()+1,l.renova.getMonth(),l.renova.getDate()).toLocaleDateString("pt-BR")+"."
+        : "Mensal, então dá para ajustar a qualquer ciclo.", g:null});
+  });
+  // 4. conta bloqueada segurando licenca
+  const presos=[]; lista.forEach(l=>l.pessoas.forEach(p=>{ if(!p.a) presos.push({p:p.n,l:l.nome,v:l.preco}); }));
+  if(presos.length) A.push({n:"crit",mk:"DINHEIRO PARADO",
+    t:"<b>"+presos.length+" conta"+(presos.length>1?"s":"")+" bloqueada"+(presos.length>1?"s":"")+" ainda ocupa"+(presos.length>1?"m":"")+
+      " licença paga.</b> "+presos.map(x=>esc(x.p)+" segura uma "+esc(x.l)).join("; ")+".",
+    t2:"Retirar a licença devolve o assento na hora e não apaga nada da conta.",
+    g:presos.reduce((s,x)=>s+x.v,0), gl:"por mês"});
+  // 5. preco unitario mudou no historico
+  if(histLic && histLic.meses.length>1){
+    const ult=histLic.meses[histLic.meses.length-1], pen=histLic.meses[histLic.meses.length-2];
+    Object.keys(ult.produtos||{}).forEach(k=>{
+      const a=ult.produtos[k], b=pen.produtos&&pen.produtos[k];
+      if(a&&b&&a.unit&&b.unit&&Math.abs(a.unit-b.unit)>0.01){
+        const p=(a.unit-b.unit)/b.unit*100;
+        A.push({n:p>0?"warn":"info",mk:"PREÇO MUDOU",
+          t:"O preço por assento de <b>"+esc(k)+"</b> passou de "+brl(b.unit)+" para "+brl(a.unit)+", "+
+            (p>0?"alta":"queda")+" de "+Math.abs(p).toFixed(0)+"%.",
+          t2:"Isso não aparece na soma total quando o número de pessoas muda junto. Vale conferir na próxima renovação.",g:null});
+      }
+    });
+  }
+  // 6. automacao que cobra por hora ligada
+  if(azureCache){
+    const pg=azureCache.recursos.find(r=>r.nome.indexOf("pg-")===0);
+    if(pg) A.push({n:"info",mk:"COBRA PARADO",
+      t:"<b>"+esc(pg.nome)+"</b> é banco de dados: cobra por <b>hora ligada</b>, mesmo sem ninguém consultar.",
+      t2:"Se a Homylda ainda está em construção e só é usada em horário de trabalho, desligar fora do expediente corta a maior parte disso.",
+      g:pg.v, gl:"no mês até agora"});
+  }
+  return A;
+}
+function pintaAvisos(alvo, A){
+  $(alvo).innerHTML = A.length ? A.map(a=>
+    '<div class="aviso '+a.n+'"><span class="mk">'+esc(a.mk)+'</span><div class="corpo"><p>'+a.t+'</p>'+
+    (a.t2?'<p class="why">'+a.t2+'</p>':'')+'</div>'+
+    (a.g!=null?'<div class="grana">'+brl(a.g)+'<small>'+esc(a.gl||"")+'</small></div>':'<div></div>')+
+    '</div>').join('')
+    : '<div class="aviso info"><span class="mk">TUDO CERTO</span><div class="corpo"><p>Nenhum assento sem dono, nenhuma assinatura parada e nenhuma renovação nos próximos 45 dias.</p></div><div></div></div>';
+}
+
+/* ---------- ciclo ---------- */
 async function atualizar(){
-  if (emCurso) return;
-  emCurso = true;
-  try {
+  if(emCurso) return; emCurso=true;
+  try{
+    if(!histLic){ try{ histLic = await (await fetch("historico-licencas.json",{cache:"no-store"})).json(); }catch(e){ histLic=null; } }
     const skus  = await graph("/subscribedSkus");
     const users = await graph("/users?$select=displayName,userPrincipalName,accountEnabled,assignedLicenses&$top=999");
+    const subs  = await graph("/directory/subscriptions", true);
+    const lista = montaLicencas(skus, users, subs);
+    desenhaProdutos(lista);
 
-    const lista = desenhaLicencas(skus, users);
-    desenhaAlertas(lista);
-
-    const ativos = users.filter(u=>u.accountEnabled).length;
-    $("#n-ativos").textContent = ativos;
-    $("#n-bloq").textContent = users.length - ativos;
-
-    if (Date.now() >= azureDepoisDe){
-      try {
-        azureCache = await lerAzure(); azureErro = null;
-        azureDepoisDe = Date.now() + PASSO_AZURE;
-      } catch(e){
-        azureErro = e.message;
-        azureDepoisDe = Date.now() + ESPERA_APOS_ERRO;
-      }
+    if(Date.now()>=azureDepois){
+      try{ azureCache=await lerAzure(); azureErro=null; azureDepois=Date.now()+PASSO_AZURE; }
+      catch(e){ azureErro=e.message; azureDepois=Date.now()+ESPERA_ERRO; }
     }
-    desenhaAzure();
 
-    const mensal = lista.reduce((s,l)=>s+l.compradas*l.preco,0);
-    const livres = lista.reduce((s,l)=>s+l.livres,0);
-    $("#figs").innerHTML = [
-      [users.length, "contas no Microsoft 365"],
-      [lista.reduce((s,l)=>s+l.compradas,0), "assentos pagos"],
-      [livres, livres===1 ? "assento livre" : "assentos livres"],
-      [brl(mensal), "por mês em licença"],
-      [azureCache ? brl(azureCache.total) : "—", "Azure no mês"]
-    ].map(f=>'<div class="fig"><b class="num">'+esc(f[0])+'</b><span>'+esc(f[1])+'</span></div>').join('');
+    /* --- serie de meses combinada --- */
+    const mesesLic = histLic? histLic.meses.map(m=>m.mes) : [];
+    const mesesAz  = azureCache? Object.keys(azureCache.porMes) : [];
+    const meses = Array.from(new Set(mesesLic.concat(mesesAz))).sort().slice(-8);
+    const vLic = meses.map(m=>{ const x=histLic&&histLic.meses.find(z=>z.mes===m); return x?x.total:0; });
+    const vAz  = meses.map(m=>{ const x=azureCache&&azureCache.porMes[m];
+      return x? Object.keys(x).reduce((s,k)=>s+x[k],0) : 0; });
+    barras("#graf-geral",[{nome:"Licenças",v:vLic},{nome:"Automação",v:vAz}],meses.map(rotuloMes),
+      ["var(--blue)","var(--teal)"]);
 
-    $("#carregando").hidden = true;
-    $("#conteudo").hidden = false;
-    ultimoOk = new Date();
-    vivo();
-  } catch(e){
-    // Mantemos na tela o ultimo retrato bom: apagar tudo por causa de uma
-    // falha passageira esconderia informacao que ainda vale.
-    parado(e && e.message ? e.message : String(e));
-    if (!ultimoOk){ $("#carregando").hidden = true; $("#gate").hidden = false;
-      $("#gate-erro").hidden = false; $("#gate-erro").innerHTML = "<b>Não consegui carregar:</b> " + esc(e.message); }
-  } finally { emCurso = false; }
+    /* --- numeros da visao geral --- */
+    const mensalLic = lista.reduce((s,l)=>s+l.compradas*l.preco,0);
+    const i=meses.length-1, ant=i-1;
+    const totAtual=(vLic[i]||0)+(vAz[i]||0), totAnt= ant>=0 ? (vLic[ant]||0)+(vAz[ant]||0) : null;
+    $("#figs-geral").innerHTML=[
+      ['<b class="num">'+brl0(mensalLic)+'</b>','licenças, por mês hoje',''],
+      ['<b class="num">'+(azureCache?brl(azureCache.total):"—")+'</b>','automação, mês corrente',''],
+      ['<b class="num">'+brl0(totAnt!=null?totAnt:0)+'</b>','total do mês anterior fechado',deltaHtml(totAtual,totAnt)],
+      ['<b class="num">'+lista.reduce((s,l)=>s+l.livres,0)+'</b>','assentos sem dono',''],
+      ['<b class="num">'+lista.filter(l=>l.termo==="anual").length+'</b>','contratos anuais','']
+    ].map(f=>'<div class="fig">'+f[0]+'<span>'+f[1]+'</span>'+(f[2]||'')+'</div>').join('');
+
+    const A = avisos(lista, meses);
+    pintaAvisos("#avisos", A);
+    pintaAvisos("#avisos-contrato", A.filter(x=>x.mk.indexOf("RENOVA")===0 || x.mk==="ASSENTO SEM DONO" || x.mk==="PARADA"));
+    const crit = A.filter(x=>x.n==="crit").length;
+    const chip = $("#aba-geral") && $("#aba-geral").querySelector(".cont");
+    if(chip){ chip.textContent=crit||""; chip.hidden=!crit; }
+
+    /* --- modulo licencas --- */
+    $("#figs-lic").innerHTML=[
+      ['<b class="num">'+lista.reduce((s,l)=>s+l.compradas,0)+'</b>','assentos pagos'],
+      ['<b class="num">'+lista.reduce((s,l)=>s+l.usadas,0)+'</b>','assentos em uso'],
+      ['<b class="num">'+lista.reduce((s,l)=>s+l.livres,0)+'</b>','sem dono'],
+      ['<b class="num">'+brl0(mensalLic)+'</b>','por mês'],
+      ['<b class="num">'+users.length+'</b>','contas no Microsoft 365']
+    ].map(f=>'<div class="fig">'+f[0]+'<span>'+f[1]+'</span></div>').join('');
+
+    if(histLic){
+      const chaves=["standard","basic","powerbi"], rot={standard:"Business Standard",basic:"Business Basic",powerbi:"Power BI Pro"};
+      const cores=["var(--blue)","var(--amber)","var(--teal)"];
+      const ml=histLic.meses.map(m=>m.mes);
+      barras("#graf-lic", chaves.map((k,n)=>({nome:rot[k],
+        v:ml.map(m=>{const x=histLic.meses.find(z=>z.mes===m); return x&&x.produtos[k]?x.produtos[k].total:0;})})),
+        ml.map(rotuloMes), cores);
+      $("#leg-lic").innerHTML = chaves.map((k,n)=>'<span><span class="sw" style="background:'+cores[n]+'"></span>'+rot[k]+'</span>').join('');
+    }
+
+    /* --- modulo automacao --- */
+    if(azureCache){
+      const grupos=Array.from(new Set(Object.keys(azureCache.porMes).flatMap(m=>Object.keys(azureCache.porMes[m]))));
+      const ma=Object.keys(azureCache.porMes).sort();
+      const cores=["var(--teal)","var(--blue)","var(--amber)","var(--ruby)","var(--ink-3)"];
+      barras("#graf-auto", grupos.map(g=>({nome:g,v:ma.map(m=>azureCache.porMes[m][g]||0)})),
+        ma.map(rotuloMes), cores);
+      $("#leg-auto").innerHTML = grupos.map((g,n)=>'<span><span class="sw" style="background:'+cores[n%cores.length]+'"></span>'+esc(g)+'</span>').join('');
+      const porGrupo={}; azureCache.recursos.forEach(r=>{const g=setor(r.grupo); porGrupo[g]=(porGrupo[g]||0)+r.v;});
+      $("#figs-auto").innerHTML=[['<b class="num">'+brl(azureCache.total)+'</b>','mês corrente, parcial']]
+        .concat(Object.keys(porGrupo).sort((a,b)=>porGrupo[b]-porGrupo[a]).slice(0,4)
+          .map(g=>['<b class="num">'+brl(porGrupo[g])+'</b>',g]))
+        .map(f=>'<div class="fig">'+f[0]+'<span>'+esc(f[1])+'</span></div>').join('');
+      $("#tb-recursos").innerHTML = azureCache.recursos.map(r=>
+        '<tr><td class="mono">'+esc(r.nome)+'</td><td>'+esc(r.svc)+'</td><td>'+esc(setor(r.grupo))+
+        '</td><td class="r num">'+brl(r.v)+'</td><td class="why">'+esc(explica(r.nome))+'</td></tr>').join('');
+    } else {
+      $("#tb-recursos").innerHTML='<tr><td colspan="5" class="why">Não consegui ler a Azure: '+esc(azureErro||"")+'</td></tr>';
+    }
+
+    /* --- modulo contratos --- */
+    $("#tb-contratos").innerHTML = lista.slice().sort((a,b)=>(a.renova||9e13)-(b.renova||9e13)).map(l=>{
+      const d=l.renova?dias(l.renova):null;
+      const preso=(l.termo==="anual"&&d>0)? l.livres*l.preco*(d/30) : l.livres*l.preco;
+      let conselho;
+      if(l.suspensa) conselho="Reativar ou retirar a licença de quem está com ela.";
+      else if(l.livres>0 && l.termo==="anual") conselho="Reduzir para "+l.usadas+" assentos na renovação, se ninguém novo entrar.";
+      else if(l.livres>0) conselho="Reduzir assentos no próximo ciclo.";
+      else if(l.termo==="anual") conselho="Sem sobra. Manter anual faz sentido enquanto a equipe for estável.";
+      else conselho="Mensal e sem sobra. Nada a fazer.";
+      return '<tr><td><b>'+esc(l.nome)+'</b></td>'+
+        '<td>'+(l.termo==="anual"?'<span class="tag anual">anual</span>':l.termo==="mensal"?'<span class="tag mensal">mensal</span>':'—')+'</td>'+
+        '<td class="num">'+(l.renova?l.renova.toLocaleDateString("pt-BR"):"—")+'</td>'+
+        '<td class="r num">'+(d!=null? (d<0? "venceu" : d+" dias") : "—")+'</td>'+
+        '<td class="r num">'+l.usadas+" de "+l.compradas+'</td>'+
+        '<td class="r num">'+(l.livres||"—")+'</td>'+
+        '<td class="r num">'+(l.livres>0?brl(preso):"—")+'</td>'+
+        '<td class="why">'+esc(conselho)+'</td></tr>';
+    }).join('');
+
+    $("#rodape-fonte").textContent = histLic ? ("Histórico de licença: "+histLic.fonte) : "";
+    $("#quem").textContent = conta.name || conta.username;
+    $("#btn-sair").hidden=false;
+    $("#carregando").hidden=true; $("#conteudo").hidden=false;
+    ultimoOk=new Date(); vivo();
+  }catch(e){
+    parado(e&&e.message?e.message:String(e));
+    if(!ultimoOk){ $("#carregando").hidden=true; $("#gate").hidden=false;
+      $("#gate-erro").hidden=false; $("#gate-erro").innerHTML="<b>Não consegui carregar:</b> "+esc(e.message); }
+  } finally { emCurso=false; }
 }
 
-function ligarRelogio(){
-  clearInterval(tmLoop); clearInterval(tmRelogio);
-  tmLoop = setInterval(()=>{
-    // Aba escondida nao rele: nao adianta gastar consulta para ninguem ver.
-    if (document.visibilityState !== "visible") return;
-    deFundo = true; atualizar().finally(()=>{ deFundo = false; });
-  }, PASSO_GRAPH);
-  tmRelogio = setInterval(relogio, 5000);
-}
+/* ---------- abas ---------- */
+const MODULOS=[["geral","Visão geral"],["licencas","Licenças"],["automacao","Automação"],["contratos","Contratos e renovações"]];
+$("#abas").innerHTML = MODULOS.map((m,i)=>'<button class="aba" id="aba-'+m[0]+'" role="tab" data-m="'+m[0]+
+  '" aria-selected="'+(i===0)+'">'+m[1]+'<span class="cont" hidden></span></button>').join('');
+document.querySelectorAll(".aba").forEach(b=>b.addEventListener("click",()=>{
+  MODULOS.forEach(m=>{
+    const sel=m[0]===b.dataset.m;
+    document.getElementById("mod-"+m[0]).hidden=!sel;
+    document.getElementById("aba-"+m[0]).setAttribute("aria-selected",sel);
+  });
+  window.scrollTo({top:0,behavior:"smooth"});
+}));
 
-document.addEventListener("visibilitychange", ()=>{
-  if (document.visibilityState === "visible" && conta && ultimoOk){
-    deFundo = true; atualizar().finally(()=>{ deFundo = false; });
-  }
-});
+function ligar(){ clearInterval(tmLoop); clearInterval(tmRel);
+  tmLoop=setInterval(()=>{ if(document.visibilityState!=="visible") return;
+    deFundo=true; atualizar().finally(()=>{deFundo=false;}); }, PASSO_GRAPH);
+  tmRel=setInterval(rel,5000); }
+document.addEventListener("visibilitychange",()=>{ if(document.visibilityState==="visible"&&conta&&ultimoOk){
+  deFundo=true; atualizar().finally(()=>{deFundo=false;}); }});
 
-async function comecar(){
-  $("#gate").hidden = true;
-  $("#carregando").hidden = false;
-  $("#quem").textContent = conta.name || conta.username;
-  $("#btn-sair").hidden = false;
-  await atualizar();
-  ligarRelogio();
-}
+async function comecar(){ $("#gate").hidden=true; $("#carregando").hidden=false;
+  $("#carregando-txt").textContent="Consultando licenças, contratos e consumo…";
+  await atualizar(); ligar(); }
+async function iniciar(){ await msalInstance.initialize();
+  const r=await msalInstance.handleRedirectPromise();
+  if(r&&r.account) conta=r.account; else { const c=msalInstance.getAllAccounts(); if(c.length) conta=c[0]; }
+  if(conta){ msalInstance.setActiveAccount(conta); comecar(); } }
 
-async function iniciar(){
-  await msalInstance.initialize();
-  const resp = await msalInstance.handleRedirectPromise();
-  if (resp && resp.account) conta = resp.account;
-  else { const c = msalInstance.getAllAccounts(); if (c.length) conta = c[0]; }
-  if (conta){ msalInstance.setActiveAccount(conta); comecar(); }
-}
+$("#btn-entrar").addEventListener("click",async()=>{
+  try{ const r=await msalInstance.loginPopup({scopes:GRAPH_SCOPES});
+    conta=r.account; msalInstance.setActiveAccount(conta); await comecar(); }
+  catch(e){ $("#gate-erro").hidden=false; $("#gate-erro").innerHTML="<b>Não consegui entrar:</b> "+esc(e&&e.message?e.message:e); }});
+$("#btn-sair").addEventListener("click",()=>{ clearInterval(tmLoop); msalInstance.logoutPopup(); });
+$("#btn-agora").addEventListener("click",()=>{ azureDepois=0; atualizar(); });
 
-$("#btn-entrar").addEventListener("click", async ()=>{
-  try {
-    const r = await msalInstance.loginPopup({ scopes: GRAPH_SCOPES });
-    conta = r.account; msalInstance.setActiveAccount(conta);
-    await comecar();
-  } catch(e){
-    $("#gate-erro").hidden = false;
-    $("#gate-erro").innerHTML = "<b>Não consegui entrar:</b> " + esc(e && e.message ? e.message : e);
-  }
-});
-$("#btn-sair").addEventListener("click", ()=>{ clearInterval(tmLoop); msalInstance.logoutPopup(); });
-$("#btn-agora").addEventListener("click", ()=>{ azureDepoisDe = 0; atualizar(); });
-
-iniciar().catch(e=>{
-  $("#gate-erro").hidden = false;
-  $("#gate-erro").innerHTML = "<b>Não consegui iniciar:</b> " + esc(e && e.message ? e.message : e);
-});
+iniciar().catch(e=>{ $("#gate-erro").hidden=false;
+  $("#gate-erro").innerHTML="<b>Não consegui iniciar:</b> "+esc(e&&e.message?e.message:e); });
 })();
 </script>
 </body>

@@ -1,0 +1,153 @@
+{
+  "geradoEm": "2026-11-16",
+  "fonte": "Faturas E0101 da conta MOSA, extraidas dos PDFs recebidos por e-mail. A fatura emitida no dia 02 cobre o mes anterior.",
+  "meses": [
+    {
+      "mes": "2026-04",
+      "total": 6659.72,
+      "produtos": {
+        "powerbi": {
+          "total": 467.5,
+          "unit": 93.5,
+          "fatura": null
+        },
+        "standard": {
+          "total": 5082.73,
+          "unit": 83.5,
+          "fatura": null
+        },
+        "basic": {
+          "total": 1109.49,
+          "unit": 35.79,
+          "fatura": null
+        }
+      }
+    },
+    {
+      "mes": "2026-05",
+      "total": 6586.99,
+      "produtos": {
+        "powerbi": {
+          "total": 467.5,
+          "unit": 93.5,
+          "fatura": null
+        },
+        "standard": {
+          "total": 5010.0,
+          "unit": 83.5,
+          "fatura": null
+        },
+        "basic": {
+          "total": 1109.49,
+          "unit": 35.79,
+          "fatura": null
+        }
+      }
+    },
+    {
+      "mes": "2026-06",
+      "total": 6586.99,
+      "produtos": {
+        "powerbi": {
+          "total": 467.5,
+          "unit": 93.5,
+          "fatura": null
+        },
+        "standard": {
+          "total": 5010.0,
+          "unit": 83.5,
+          "fatura": null
+        },
+        "basic": {
+          "total": 1109.49,
+          "unit": 35.79,
+          "fatura": null
+        }
+      }
+    },
+    {
+      "mes": "2026-07",
+      "total": 7860.89,
+      "produtos": {
+        "powerbi": {
+          "total": 995.33,
+          "unit": 93.5,
+          "fatura": "E010102D28"
+        },
+        "standard": {
+          "total": 5235.45,
+          "unit": 83.5,
+          "fatura": "E0101029BD"
+        },
+        "basic": {
+          "total": 1630.11,
+          "unit": null,
+          "fatura": "E010102D29"
+        }
+      }
+    },
+    {
+      "mes": "2026-08",
+      "total": 8173.73,
+      "produtos": {
+        "powerbi": {
+          "total": 935.0,
+          "unit": 93.5,
+          "fatura": "E01010A5CQ"
+        },
+        "standard": {
+          "total": 5443.66,
+          "unit": 83.5,
+          "fatura": "E010109OMR"
+        },
+        "basic": {
+          "total": 1795.07,
+          "unit": null,
+          "fatura": "E01010AAPR"
+        }
+      }
+    },
+    {
+      "mes": "2026-09",
+      "total": 8676.29,
+      "produtos": {
+        "powerbi": {
+          "total": 1196.8,
+          "unit": 93.5,
+          "fatura": "E01010HLN8"
+        },
+        "standard": {
+          "total": 5748.03,
+          "unit": 83.5,
+          "fatura": "E01010H43Y"
+        },
+        "basic": {
+          "total": 1731.46,
+          "unit": 48.1,
+          "fatura": "E01010HLN9"
+        }
+      }
+    },
+    {
+      "mes": "2026-10",
+      "total": 8447.96,
+      "produtos": {
+        "powerbi": {
+          "total": 1122.0,
+          "unit": 93.5,
+          "fatura": "E01010O0UK"
+        },
+        "standard": {
+          "total": 5594.5,
+          "unit": 83.5,
+          "fatura": "E01010NZGH"
+        },
+        "basic": {
+          "total": 1731.46,
+          "unit": 48.1,
+          "fatura": "E01010OC9G"
+        }
+      }
+    }
+  ]
+}
