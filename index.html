@@ -347,7 +347,15 @@ const explica = n => (EXPLICA.find(e => n.indexOf(e[0])===0)||[,"Recurso da Azur
 const setor   = g => (SETOR.find(e => (g||"").toLowerCase().indexOf(e[0])===0)||[,g||"sem grupo"])[1];
 const MES = ["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"];
 const rotuloMes = ym => { const [a,m]=ym.split("-"); return MES[+m-1]+"/"+a.slice(2); };
-const dias = d => Math.ceil((d - new Date())/86400000);
+/* A Microsoft devolve a renovacao em UTC. Formatar no fuso do navegador
+   puxa a data um dia para tras, e aqui a data E a decisao. */
+const fmtData = d => d ? String(d.getUTCDate()).padStart(2,"0")+"/"+
+  String(d.getUTCMonth()+1).padStart(2,"0")+"/"+d.getUTCFullYear() : "—";
+const dias = d => { if(!d) return null;
+  const a=Date.UTC(d.getUTCFullYear(),d.getUTCMonth(),d.getUTCDate());
+  const h=new Date(); const b=Date.UTC(h.getFullYear(),h.getMonth(),h.getDate());
+  return Math.round((a-b)/86400000); };
+const maisUmAno = d => new Date(Date.UTC(d.getUTCFullYear()+1,d.getUTCMonth(),d.getUTCDate()));
 
 const msalInstance = new msal.PublicClientApplication({
   auth:{ clientId:CLIENT_ID, authority:"https://login.microsoftonline.com/"+TENANT_ID,
@@ -482,7 +490,7 @@ function desenhaProdutos(lista){
     const livrePct = l.compradas? (l.livres/l.compradas*100):0;
     const tags = [
       l.termo!=="?" ? '<span class="tag '+l.termo+'">'+(l.termo==="anual"?"contrato anual":"mensal")+'</span>' : '',
-      l.renova ? '<span class="tag">renova '+l.renova.toLocaleDateString("pt-BR")+'</span>' : '',
+      l.renova ? '<span class="tag">renova '+fmtData(l.renova)+'</span>' : '',
       l.livres>0 ? '<span class="tag livre">'+l.livres+' sem dono</span>' : '',
       l.suspensa ? '<span class="tag ruim">suspensa</span>' : ''
     ].join('');
@@ -525,7 +533,7 @@ function avisos(lista, azureMeses){
       t:"<b>"+l.livres+" assento"+(l.livres>1?"s":"")+" de "+esc(l.nome)+"</b> está"+(l.livres>1?"o":"")+
         " pago e sem ninguém. Dá para atribuir sem comprar nada.",
       t2: l.termo==="anual"
-        ? "Como o contrato é anual, só dá para devolver esse assento na renovação, em "+l.renova.toLocaleDateString("pt-BR")+". Até lá ele é pago de qualquer jeito."
+        ? "Como o contrato é anual, só dá para devolver esse assento na renovação, em "+fmtData(l.renova)+". Até lá ele é pago de qualquer jeito."
         : "Como é mensal, dá para reduzir já no próximo ciclo.",
       g:preso, gl:(l.termo==="anual"?"preso até a renovação":"por mês")});
   });
@@ -533,11 +541,11 @@ function avisos(lista, azureMeses){
   lista.filter(l=>l.renova && dias(l.renova)<=45 && dias(l.renova)>=0).forEach(l=>{
     const d=dias(l.renova);
     A.push({n:d<=15?"crit":"warn", mk:"RENOVA EM "+d+"D",
-      t:"<b>"+esc(l.nome)+"</b> renova em <b>"+l.renova.toLocaleDateString("pt-BR")+"</b>"+
+      t:"<b>"+esc(l.nome)+"</b> renova em <b>"+fmtData(l.renova)+"</b>"+
         (l.termo==="anual"?", por mais um ano":"")+".",
       t2: l.termo==="anual"
         ? "É a única janela do ano para mudar quantidade de assento ou trocar para mensal. Passou a data, fica como está até "+
-          new Date(l.renova.getFullYear()+1,l.renova.getMonth(),l.renova.getDate()).toLocaleDateString("pt-BR")+"."
+          fmtData(maisUmAno(l.renova))+"."
         : "Mensal, então dá para ajustar a qualquer ciclo.", g:null});
   });
   // 4. conta bloqueada segurando licenca
@@ -593,7 +601,7 @@ async function atualizar(){
 
     if(Date.now()>=azureDepois){
       try{ azureCache=await lerAzure(); azureErro=null; azureDepois=Date.now()+PASSO_AZURE; }
-      catch(e){ azureErro=e.message; azureDepois=Date.now()+ESPERA_ERRO; }
+      catch(e){ azureErro=e.message; azureDepois=Date.now()+(/limite de consultas/.test(e.message)?45000:ESPERA_ERRO); }
     }
 
     /* --- serie de meses combinada --- */
@@ -661,7 +669,9 @@ async function atualizar(){
         '<tr><td class="mono">'+esc(r.nome)+'</td><td>'+esc(r.svc)+'</td><td>'+esc(setor(r.grupo))+
         '</td><td class="r num">'+brl(r.v)+'</td><td class="why">'+esc(explica(r.nome))+'</td></tr>').join('');
     } else {
-      $("#tb-recursos").innerHTML='<tr><td colspan="5" class="why">Não consegui ler a Azure: '+esc(azureErro||"")+'</td></tr>';
+      $("#tb-recursos").innerHTML='<tr><td colspan="5" class="why"><b>A Azure não respondeu agora:</b> '+
+        esc(azureErro||"")+'. A página tenta sozinha de novo em instantes, não precisa fazer nada. '+
+        'Isso costuma ser limite de consultas, não defeito nem falta de permissão.</td></tr>';
     }
 
     /* --- modulo contratos --- */
@@ -676,7 +686,7 @@ async function atualizar(){
       else conselho="Mensal e sem sobra. Nada a fazer.";
       return '<tr><td><b>'+esc(l.nome)+'</b></td>'+
         '<td>'+(l.termo==="anual"?'<span class="tag anual">anual</span>':l.termo==="mensal"?'<span class="tag mensal">mensal</span>':'—')+'</td>'+
-        '<td class="num">'+(l.renova?l.renova.toLocaleDateString("pt-BR"):"—")+'</td>'+
+        '<td class="num">'+(l.renova?fmtData(l.renova):"—")+'</td>'+
         '<td class="r num">'+(d!=null? (d<0? "venceu" : d+" dias") : "—")+'</td>'+
         '<td class="r num">'+l.usadas+" de "+l.compradas+'</td>'+
         '<td class="r num">'+(l.livres||"—")+'</td>'+
