@@ -312,6 +312,16 @@ const PRECO = {
 };
 /* Qual serie do historico de faturas corresponde a cada SKU. */
 const SERIE = { O365_BUSINESS_PREMIUM:"standard", O365_BUSINESS_ESSENTIALS:"basic", POWER_BI_PRO:"powerbi" };
+
+/* O TERMO (compromisso anual x mes a mes) NAO sai de nenhuma API.
+   O Graph so da a proxima data de renovacao, e deduzir o termo pela distancia
+   entre criacao e renovacao ERRA: a Basic parecia anual e e "Mes a Mes".
+   Entao aqui so entra o que foi conferido na tela do centro de administracao,
+   com a data da conferencia. O que nao estiver aqui aparece como nao confirmado. */
+const TERMO = {
+  O365_BUSINESS_ESSENTIALS: { termo:"mensal", conferido:"16/11/2026", nota:"o produto se chama 'Basic (Mês a Mês)' no centro de administração" },
+  O365_BUSINESS_PREMIUM:    { termo:"anual",  conferido:"16/11/2026", nota:"renova por mais um ano em 15/01/2027" }
+};
 const PAGAS = Object.keys(PRECO);
 
 const EXPLICA = [
@@ -468,9 +478,8 @@ function montaLicencas(skus, users, subs){
   return skus.filter(s=>PAGAS.indexOf(s.skuPartNumber)>=0).map(s=>{
     const sub=subs.find(x=>x.skuId===s.skuId)||{};
     const saldo=s.prepaidUnits.enabled - s.consumedUnits;
-    const cri=sub.createdDateTime?new Date(sub.createdDateTime):null;
     const ren=sub.nextLifecycleDateTime?new Date(sub.nextLifecycleDateTime):null;
-    const janela=(cri&&ren)?Math.round((ren-cri)/86400000):0;
+    const t=TERMO[s.skuPartNumber];
     const pessoas=users.filter(u=>(u.assignedLicenses||[]).some(l=>l.skuId===s.skuId))
       .map(u=>({n:(u.displayName||"").replace(/\s*\|\s*Homy Química\s*$/i,""),u:u.userPrincipalName,a:!!u.accountEnabled}))
       .sort((a,b)=>a.n.localeCompare(b.n,"pt-BR"));
@@ -479,7 +488,7 @@ function montaLicencas(skus, users, subs){
       livres:Math.max(0,saldo), excedente:Math.max(0,-saldo),
       suspensa:(sub.status==="Suspended"), status:sub.status||"?",
       preco:PRECO[s.skuPartNumber], serie:SERIE[s.skuPartNumber]||null,
-      renova:ren, termo: janela>=330?"anual" : janela>=25?"mensal" : "?",
+      renova:ren, termo: t?t.termo:"?", termoNota: t?t.nota:null, termoEm: t?t.conferido:null,
       pessoas };
   }).sort((a,b)=>(b.compradas*b.preco)-(a.compradas*a.preco));
 }
@@ -489,7 +498,7 @@ function desenhaProdutos(lista){
     const usoPct = l.compradas? (l.usadas/l.compradas*100):0;
     const livrePct = l.compradas? (l.livres/l.compradas*100):0;
     const tags = [
-      l.termo!=="?" ? '<span class="tag '+l.termo+'">'+(l.termo==="anual"?"contrato anual":"mensal")+'</span>' : '',
+      l.termo!=="?" ? '<span class="tag '+l.termo+'">'+(l.termo==="anual"?"contrato anual":"mês a mês")+'</span>' : '<span class="tag">termo não confirmado</span>',
       l.renova ? '<span class="tag">renova '+fmtData(l.renova)+'</span>' : '',
       l.livres>0 ? '<span class="tag livre">'+l.livres+' sem dono</span>' : '',
       l.suspensa ? '<span class="tag ruim">suspensa</span>' : ''
@@ -681,11 +690,12 @@ async function atualizar(){
       let conselho;
       if(l.suspensa) conselho="Reativar ou retirar a licença de quem está com ela.";
       else if(l.livres>0 && l.termo==="anual") conselho="Reduzir para "+l.usadas+" assentos na renovação, se ninguém novo entrar.";
-      else if(l.livres>0) conselho="Reduzir assentos no próximo ciclo.";
+      else if(l.livres>0 && l.termo==="mensal") conselho="Mês a mês: dá para reduzir já no próximo ciclo.";
+      else if(l.livres>0) conselho="Confirmar o termo no centro de administração antes de decidir.";
       else if(l.termo==="anual") conselho="Sem sobra. Manter anual faz sentido enquanto a equipe for estável.";
       else conselho="Mensal e sem sobra. Nada a fazer.";
       return '<tr><td><b>'+esc(l.nome)+'</b></td>'+
-        '<td>'+(l.termo==="anual"?'<span class="tag anual">anual</span>':l.termo==="mensal"?'<span class="tag mensal">mensal</span>':'—')+'</td>'+
+        '<td>'+(l.termo==="anual"?'<span class="tag anual">anual</span>':l.termo==="mensal"?'<span class="tag mensal">mês a mês</span>':'<span class="tag">a confirmar</span>')+'</td>'+
         '<td class="num">'+(l.renova?fmtData(l.renova):"—")+'</td>'+
         '<td class="r num">'+(d!=null? (d<0? "venceu" : d+" dias") : "—")+'</td>'+
         '<td class="r num">'+l.usadas+" de "+l.compradas+'</td>'+
